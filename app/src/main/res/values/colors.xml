@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#d4d4d4</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="white">#FFFFFF</color>
+    <color name="background">#ffffff</color>
+    <color name="background_index">#ebf0f6</color>
+    <color name="background_orange">#f08a2f</color>
+    <color name="title_black">#141313</color>
+    <color name="text_black">#333333</color>
+    <color name="text_orange">#e47513</color>
+    <color name="text_blue1">#6ed2df</color>
+    <color name="text_blue2">#2c7efd</color>
+    <color name="text_gray">#717171</color>
+    <color name="text_gray2">#979796</color>
+    <color name="line1">#f38019</color>
+    <color name="line2">#0ad2c3</color>
+    <color name="line3">#e5e4e4</color>
+    <color name="line4">#edf0f7</color>
+    <color name="btn_orange">#f4892a</color>
+    <color name="btn_gray">#999999</color>
+    <color name="btn_gray2">#939393</color>
+    <color name="trans_white">#7fffffff</color>
+    <color name="trans">#00ffffff</color>
+    <color name="trans_70black">#B3000000</color>
+    <color name="assess_edit">#eff7f8</color>
+</resources>

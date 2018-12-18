@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_item_corners"
+    android:layout_gravity="center_horizontal"
+    android:id="@+id/ll_item">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+        <ImageView
+            android:id="@+id/iv_mall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/img_defult_mall"
+            android:scaleType="centerCrop"/>
+        <ImageView
+            android:id="@+id/iv_hot"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@mipmap/img_remai"
+            android:scaleType="centerCrop"/>
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+        <TextView
+            android:id="@+id/tv_mall_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="商品标题"
+            android:textSize="14sp"
+            android:textColor="@color/text_black"
+            android:lines="1"
+            android:ellipsize="end"
+            android:layout_marginBottom="5dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="¥1000"
+                android:textColor="@color/text_orange"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tv_num"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="1111人已购买"
+                android:lines="1"
+                android:ellipsize="end"
+                android:paddingRight="5dp"
+                android:textColor="@color/text_gray"
+                android:textSize="11sp"/>
+            <ImageView
+                android:id="@+id/iv_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/icon_mall_detail"
+                android:layout_gravity="bottom"/>
+        </LinearLayout>
+    </LinearLayout>
+    
+
+</LinearLayout>

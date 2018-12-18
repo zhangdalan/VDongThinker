@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+    <include layout="@layout/layout_title"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/bg_login"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1"/>
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/bg_login_text"
+            android:scaleType="fitStart"/>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/lable_code"
+                android:textColor="@color/text_black"
+                android:textSize="16sp" />
+            <View
+                android:id="@+id/view_code"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/line1"
+                android:layout_marginTop="3dp"/>
+
+        </LinearLayout>
+        <View
+            android:layout_width="100dp"
+            android:layout_height="1dp"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lable_password"
+                android:textColor="@color/text_black"
+                android:textSize="16sp"
+                android:gravity="center" />
+            <View
+                android:id="@+id/view_password"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/line2"
+                android:layout_marginTop="3dp"
+                android:visibility="invisible"/>
+        </LinearLayout>
+        
+    </LinearLayout>
+
+    <include layout="@layout/layout_login_code"
+        android:id="@+id/ll_login_code"/>
+    <include layout="@layout/layout_login_password"
+        android:id="@+id/ll_login_password"/>
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="25dp"
+        style="@style/btnDefult"
+        android:text="@string/title_login"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:background="@drawable/btn_corners_orange"/>
+    <TextView
+        android:id="@+id/tv_forget_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:text="@string/text_forget_password"
+        android:paddingRight="40dp"
+        android:layout_marginTop="10dp"
+        android:textSize="13sp"
+        android:textColor="@color/text_blue1"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2.5"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="20dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/text_register_agreement1"
+            android:textSize="14sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/text_register_agreement2"
+            android:textColor="@color/text_blue2"
+            android:textSize="14sp"/>
+    </LinearLayout>
+
+</LinearLayout>
