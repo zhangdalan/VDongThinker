@@ -19,6 +19,7 @@ import com.thinker.vdongthinker.presenter.MallPresenter;
 import com.thinker.vdongthinker.tool.GlideImageLoader;
 import com.thinker.vdongthinker.tool.Util;
 import com.thinker.vdongthinker.ui.activity.CourseDetailActivity;
+import com.thinker.vdongthinker.ui.activity.MallCarActivity;
 import com.thinker.vdongthinker.ui.activity.MallDetailActivity;
 import com.thinker.vdongthinker.view.MallView;
 import com.youth.banner.Banner;
@@ -53,11 +54,17 @@ public class FragmentMall extends BasePresenterFragment<MallPresenter> implement
         iv_touxiang = contentView.findViewById(R.id.iv_touxiang);
         ll_search = contentView.findViewById(R.id.ll_search);
         ll_mall_car = contentView.findViewById(R.id.ll_mall_car);
+
         banner_mall = contentView.findViewById(R.id.banner_mall);
         banner_hot_mall = contentView.findViewById(R.id.banner_hot_mall);
         rv_hot_mall = contentView.findViewById(R.id.rv_hot_mall);
         tv_more = contentView.findViewById(R.id.tv_more);
-
+        ll_mall_car.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(mPresenter.mContext,MallCarActivity.class));
+            }
+        });
         setBannerDate();
         setRecycler();
     }

@@ -1,28 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:clickable="true">
+
     <RelativeLayout
+        style="@style/defultPadding"
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:background="@color/background_orange"
-        style="@style/defultPadding">
+        android:background="@color/background_orange">
+
         <ImageView
             android:id="@+id/iv_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:src="@mipmap/btn_back_white"/>
+            android:src="@mipmap/btn_back_white" />
+
         <TextView
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:text="@string/title_assess_detail"
+            android:layout_centerInParent="true"
             android:layout_gravity="center_horizontal"
+            android:text="@string/title_assess_detail"
             android:textColor="@color/white"
-            android:layout_centerInParent="true"/>
+            android:textSize="18sp" />
     </RelativeLayout>
+    <FrameLayout
+        android:id="@+id/fl_send"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <com.thinker.vdongthinker.customControl.ObservableScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -100,7 +111,9 @@
             </RelativeLayout>
             <LinearLayout
                 style="@style/courseDetailBackground"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingLeft="0dp"
+                android:paddingRight="0dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -108,16 +121,10 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
-                    <View
-                        android:layout_width="5dp"
-                        android:layout_height="15dp"
-                        android:background="@color/text_orange" />
-
                     <TextView
                         android:id="@+id/tv_assess_num"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
                         android:text="@string/lable_all_assess"
                         android:textColor="@color/text_gray"
                         android:textSize="15sp" />
@@ -127,7 +134,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:overScrollMode="never"
-                    android:scrollbars="none">
+                    android:scrollbars="none"
+                    android:dividerHeight="0.8dp">
                 </com.thinker.vdongthinker.customControl.MeasureListView>
                 <Button
                     android:id="@+id/btn_assess_more"
@@ -138,5 +146,22 @@
             </LinearLayout>
         </LinearLayout>
     </com.thinker.vdongthinker.customControl.ObservableScrollView>
-    <include la
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="bottom">
+            <View
+                android:id="@+id/view_background"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:visibility="gone"
+                android:background="@color/trans_30black"/>
+            <include layout="@layout/layout_assess_edit"
+                android:id="@+id/layout_send"/>
+        </LinearLayout>
+
+
+    </FrameLayout>
 </LinearLayout>

@@ -6,8 +6,10 @@
     android:paddingLeft="35dp"
     android:paddingRight="20dp"
     android:paddingTop="10dp"
-    android:paddingBottom="10dp">
+    android:paddingBottom="10dp"
+    android:layout_gravity="bottom">
     <EditText
+        android:id="@+id/et_assess"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="wrap_content"
@@ -15,13 +17,16 @@
         android:hint="我来说两句..."
         android:textColorHint="@color/text_gray2"
         android:padding="10dp"
-        android:textSize="15sp"/>
+        android:textSize="15sp" />
     <Button
         android:id="@+id/btn_send"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="null"
+        android:background="@null"
         android:text="发送"
+        android:minHeight="0dp"
+        android:minWidth="0dp"
+        style="@style/defultPadding"
         android:textColor="@color/text_gray2"
-        android:textSize="18sp"/>
+        android:textSize="16sp"/>
 </LinearLayout>

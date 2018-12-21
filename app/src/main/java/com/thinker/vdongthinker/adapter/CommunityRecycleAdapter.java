@@ -42,7 +42,7 @@ public class CommunityRecycleAdapter extends BaseAdapterRecycler<CommunityBean> 
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         CommunityViewHolder viewHolder = (CommunityViewHolder) holder;
         CommunityBean bean = (CommunityBean) getItem(position);
         if(bean.getVideo() == 0){
@@ -86,6 +86,12 @@ public class CommunityRecycleAdapter extends BaseAdapterRecycler<CommunityBean> 
 
             }
         });
+        viewHolder.ll_item.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onCommunityClickListener.onItemClick(position);
+            }
+        });
 
     }
     static class CommunityViewHolder extends RecyclerView.ViewHolder{
@@ -95,7 +101,7 @@ public class CommunityRecycleAdapter extends BaseAdapterRecycler<CommunityBean> 
         private ImageView iv_video,iv_assess,iv_zan;
         private RelativeLayout rv_video;
         private TextView tv_date,tv_assess_num,tv_zan_num;
-        private LinearLayout ll_assess,ll_zan;
+        private LinearLayout ll_assess,ll_zan,ll_item;
         public CommunityViewHolder(View itemView) {
             super(itemView);
             iv_touxiang = itemView.findViewById(R.id.iv_touxiang);
@@ -112,6 +118,7 @@ public class CommunityRecycleAdapter extends BaseAdapterRecycler<CommunityBean> 
             tv_zan_num = itemView.findViewById(R.id.tv_zan_num);
             ll_assess = itemView.findViewById(R.id.ll_assess);
             ll_zan = itemView.findViewById(R.id.ll_zan);
+            ll_item = itemView.findViewById(R.id.ll_item);
         }
     }
 
@@ -124,6 +131,7 @@ public class CommunityRecycleAdapter extends BaseAdapterRecycler<CommunityBean> 
         void onGridViewClick(int position);
         void onAssessClick(int position);
         void onZanClick(int position);
+        void onItemClick(int position);
     }
 
     /**

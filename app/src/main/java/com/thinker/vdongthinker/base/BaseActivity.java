@@ -18,9 +18,6 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
-/**
- * Created by zt on 2018/12/6.
- */
 
 public abstract class BaseActivity extends RxAppCompatActivity {
     public SharedPreferences vdong_share;

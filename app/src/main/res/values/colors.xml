@@ -4,9 +4,11 @@
     <color name="colorPrimaryDark">#d4d4d4</color>
     <color name="colorAccent">#FF4081</color>
     <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
     <color name="background">#ffffff</color>
     <color name="background_index">#ebf0f6</color>
     <color name="background_orange">#f08a2f</color>
+    <color name="background_gray">#f9f9f9</color>
     <color name="title_black">#141313</color>
     <color name="text_black">#333333</color>
     <color name="text_orange">#e47513</color>
@@ -24,5 +26,8 @@
     <color name="trans_white">#7fffffff</color>
     <color name="trans">#00ffffff</color>
     <color name="trans_70black">#B3000000</color>
+    <color name="trans_40black">#99000000</color>
+    <color name="trans_30black">#4d000000</color>
     <color name="assess_edit">#eff7f8</color>
+    <color name="dialog_gray">#f4f4f4</color>
 </resources>

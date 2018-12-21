@@ -50,6 +50,7 @@
     <string name="text_register_agreement2">《汇商联盟用户服务协议》</string>
     <string name="text_add_touxiang">添加头像</string>
     <string name="toast_network_error">网络错误</string>
+    <string name="toast_search_no">搜索话题不存在...</string>
     <string name="hint_phone">请输入手机号</string>
     <string name="hint_code">请输入验证码</string>
     <string name="hint_password">请输入6~16位新密码</string>
