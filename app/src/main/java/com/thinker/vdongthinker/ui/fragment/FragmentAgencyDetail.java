@@ -5,6 +5,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.thinker.vdongthinker.R;
 import com.thinker.vdongthinker.adapter.CourseAssessListViewAdapter;
 import com.thinker.vdongthinker.adapter.CoursePhotoGridViewAdapter;
@@ -56,6 +57,7 @@ public class FragmentAgencyDetail extends BasePresenterFragment<AgencyDetailFrag
         btn_assess_more.setOnClickListener(this);
         gv_photo = contentView.findViewById(R.id.gv_photo);
         lv_assess = contentView.findViewById(R.id.lv_assess);
+
         setList();
     }
 

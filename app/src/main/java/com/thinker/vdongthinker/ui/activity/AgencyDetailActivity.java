@@ -21,7 +21,7 @@ import com.thinker.vdongthinker.view.AgencyDetailView;
 import java.util.ArrayList;
 
 /**
- * Created by zt on 2018/12/13.
+ * Created by zjw on 2018/12/13.
  */
 
 public class AgencyDetailActivity extends BasePresenterActivity<AgencyDetailPresenter> implements AgencyDetailView,View.OnClickListener {
@@ -69,7 +69,8 @@ public class AgencyDetailActivity extends BasePresenterActivity<AgencyDetailPres
             }
         });
         //首页刚进来展示的fragment界面
-
+        tv_detail.setTextColor(getResources().getColor(R.color.white));
+        tv_course.setTextColor(getResources().getColor(R.color.text_black));
 
     }
 

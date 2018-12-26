@@ -32,11 +32,15 @@
     <FrameLayout
         android:id="@+id/fl_send"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:clickable="true">
 
     <com.thinker.vdongthinker.customControl.ObservableScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:scrollbars="none">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -104,11 +108,10 @@
                 android:horizontalSpacing="10dp"
                 android:visibility="gone">
             </com.thinker.vdongthinker.customControl.MeasureGridView>
-            <RelativeLayout
+            <com.xiao.nicevideoplayer.NiceVideoPlayer
+                android:id="@+id/mPlayer"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-            </RelativeLayout>
+                android:layout_height="180dp"></com.xiao.nicevideoplayer.NiceVideoPlayer>
             <LinearLayout
                 style="@style/courseDetailBackground"
                 android:orientation="vertical"
@@ -151,13 +154,6 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:gravity="bottom">
-            <View
-                android:id="@+id/view_background"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:visibility="gone"
-                android:background="@color/trans_30black"/>
             <include layout="@layout/layout_assess_edit"
                 android:id="@+id/layout_send"/>
         </LinearLayout>

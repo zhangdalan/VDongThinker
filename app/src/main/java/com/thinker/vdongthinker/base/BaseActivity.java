@@ -25,12 +25,13 @@ public abstract class BaseActivity extends RxAppCompatActivity {
 
     /*子类去实现*/
     public abstract int getLayoutID() ;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutID());
         MyApplication.getInstance().addActivity(this);
-
+        setStatusBar();
         vdong_share = getApplicationContext().getSharedPreferences("VDONG" ,MODE_PRIVATE);
 
         mEditor = vdong_share.edit() ;
@@ -58,5 +59,8 @@ public abstract class BaseActivity extends RxAppCompatActivity {
                         .compose(lifecycle);
             }
         };
+    }
+    public void setStatusBar() {
+
     }
 }

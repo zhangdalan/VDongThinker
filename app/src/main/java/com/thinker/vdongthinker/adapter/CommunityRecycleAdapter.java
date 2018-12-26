@@ -61,11 +61,12 @@ public class CommunityRecycleAdapter extends BaseAdapterRecycler<CommunityBean> 
             viewHolder.gv_photo.setAdapter(adapter_gv);
             viewHolder.gv_photo.setOverScrollMode(View.OVER_SCROLL_NEVER);
         }
+        viewHolder.tv_zan_num.setText(bean.getIS_ZAN());
         Glide.with(mContext).load(R.mipmap.icon_mall_on).apply(new RequestOptions().circleCrop()).into(viewHolder.iv_touxiang);
         viewHolder.rv_video.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                onCommunityClickListener.onVideoClick(position);
             }
         });
         viewHolder.ll_assess.setOnClickListener(new View.OnClickListener() {
@@ -77,13 +78,13 @@ public class CommunityRecycleAdapter extends BaseAdapterRecycler<CommunityBean> 
         viewHolder.ll_zan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                onCommunityClickListener.onZanClick(position);
             }
         });
         viewHolder.gv_photo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                onCommunityClickListener.onGridViewClick(position);
             }
         });
         viewHolder.ll_item.setOnClickListener(new View.OnClickListener() {

@@ -21,4 +21,5 @@ public class Constants {
     public static void setAlpha(float alpha) {
         Constants.alpha = alpha;
     }
+    public static String TEXT_VEDIO_URL = "http://flv2.bn.netease.com/tvmrepo/2016/7/2/V/EBRU4LG2V/SD/EBRU4LG2V-mobile.mp4";
 }

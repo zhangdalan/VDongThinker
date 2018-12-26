@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_index">
+
+    <include layout="@layout/layout_title_orange"/>
+    <LinearLayout
+        android:id="@+id/ll_info"
+        style="@style/courseDetailBackground"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical">
+        <ImageView
+            android:id="@+id/iv_touxiang"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@mipmap/img_defult_icon"
+            android:layout_marginLeft="20dp"/>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp">
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="蓝蓝小仙女"
+                android:textColor="@color/text_black"
+                android:textSize="16sp"/>
+            <TextView
+                android:id="@+id/tv_fts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="发帖数"
+                android:textSize="14sp"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/text_gray"
+                android:layout_below="@id/tv_name"/>
+            <TextView
+                android:id="@+id/tv_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="100"
+                android:textColor="@color/text_orange"
+                android:layout_toRightOf="@id/tv_fts"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_below="@id/tv_name"/>
+        </RelativeLayout>
+        <TextView
+            android:id="@+id/tv_update"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="修改资料"
+            android:textSize="15sp"
+            android:layout_marginRight="5dp"
+            android:textColor="@color/text_gray"/>
+        <ImageView
+            android:id="@+id/iv_update"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:src="@mipmap/btn_next"/>
+    </LinearLayout>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_community"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </android.support.v7.widget.RecyclerView>
+</LinearLayout>

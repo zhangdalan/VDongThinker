@@ -14,7 +14,7 @@ import com.thinker.vdongthinker.presenter.PerfectInformationPresenter;
 import com.thinker.vdongthinker.view.PerfectInformationView;
 
 /**
- * Created by zt on 2018/12/7.
+ * Created by zjw on 2018/12/7.
  */
 
 public class PerfectInformationActivity extends BasePresenterActivity<PerfectInformationPresenter> implements PerfectInformationView ,View.OnClickListener{

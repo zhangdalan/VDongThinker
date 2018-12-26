@@ -30,6 +30,20 @@
     <string name="lable_agency_photo">机构风采</string>
     <string name="lable_agency_assess">学生评价</string>
     <string name="lable_mall_detail">产品详情</string>
+    <string name="lable_shipping_type">配送方式</string>
+    <string name="lable_student_info">学生基本信息</string>
+    <string name="lable_name1">姓名</string>
+    <string name="lable_phone">手机号</string>
+    <string name="lable_address1">所在地区</string>
+    <string name="lable_address2">详细地址</string>
+    <string name="lable_course_time">开课时间</string>
+    <string name="lable_my_course">我的培训</string>
+    <string name="lable_student">学生信息</string>
+    <string name="lable_yijian">意见反馈</string>
+    <string name="lable_set">设置</string>
+    <string name="lable_account_safe">账户安全</string>
+    <string name="lable_version">检查更新</string>
+    <string name="lable_about_us">关于我们</string>
     <string name="title_login">登录</string>
     <string name="title_register">注册</string>
     <string name="title_find_password">找回密码</string>
@@ -58,6 +72,7 @@
     <string name="hint_name">输入昵称</string>
     <string name="hint_tel">输入手机号</string>
     <string name="hint_address">现居住地地址</string>
+    <string name="hint_add_address">请添加收货地址</string>
     <string name="btn_wancheng">完成</string>
     <string name="btn_set">确认设置</string>
     <string name="btn_next">下一步</string>
@@ -65,6 +80,7 @@
     <string name="btn_buy_course">购买课程</string>
     <string name="btn_add_car">加入购物车</string>
     <string name="btn_buy">&#8194;立即购买&#8194;</string>
+    <string name="btn_preservation">保存</string>
 
     <string name="text_test_long">测试长文本测试长文本测试长文本测试长文本测试长文本测试长文本测试长文本测试长文本测试长文本测试长文本测试长文本测试长文本</string>
 </resources>

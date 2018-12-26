@@ -8,6 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         style="@style/defultPadding"
+        android:layout_marginTop="10dp"
         android:nestedScrollingEnabled="false">
     </android.support.v7.widget.RecyclerView>
 </LinearLayout>

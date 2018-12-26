@@ -96,26 +96,26 @@ public class FragmentIndex extends BasePresenterFragment<IndexPresenter> impleme
         list_agency.add(new AgencyMallRecyclerBean("商品标题","管城区","1111"));
         list_agency.add(new AgencyMallRecyclerBean("商品标题","管城区","1111"));
         list_agency.add(new AgencyMallRecyclerBean("商品标题","管城区","1111"));
-        list_hot_mall = new ArrayList<>();
-        list_hot_mall.add(new IndexMallRecyclerBean("商品标题","1000","1111"));
-        list_hot_mall.add(new IndexMallRecyclerBean("商品标题","1000","1111"));
-        list_hot_mall.add(new IndexMallRecyclerBean("商品标题","1000","1111"));
-        list_hot_mall.add(new IndexMallRecyclerBean("商品标题","1000","1111"));
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),2);
         GridLayoutManager gridLayoutManager1 = new GridLayoutManager(getContext(),2);
-        GridLayoutManager gridLayoutManager2 = new GridLayoutManager(getContext(),2);
         rv_course.setLayoutManager(gridLayoutManager);
         rv_agency.setLayoutManager(gridLayoutManager1);
-        rv_hot_mall.setLayoutManager(gridLayoutManager2);
         adapter_course = new IndexRecyclerAdapter(getContext(),rv_course);
         adapter_course.setItems(list_course);
         rv_course.setAdapter(adapter_course);
         adapter_agency = new AgencyRecyclerAdapter(getContext(),rv_agency);
         adapter_agency.setItems(list_agency);
         rv_agency.setAdapter(adapter_agency);
-        adapter_hot_mall = new IndexRecyclerAdapter(getContext(),rv_hot_mall);
-        adapter_hot_mall.setItems(list_course);
-        rv_hot_mall.setAdapter(adapter_hot_mall);
+//        list_hot_mall = new ArrayList<>();
+//        list_hot_mall.add(new IndexMallRecyclerBean("商品标题","1000","1111"));
+//        list_hot_mall.add(new IndexMallRecyclerBean("商品标题","1000","1111"));
+//        list_hot_mall.add(new IndexMallRecyclerBean("商品标题","1000","1111"));
+//        list_hot_mall.add(new IndexMallRecyclerBean("商品标题","1000","1111"));
+//        GridLayoutManager gridLayoutManager2 = new GridLayoutManager(getContext(),2);
+//        rv_hot_mall.setLayoutManager(gridLayoutManager2);
+//        adapter_hot_mall = new IndexRecyclerAdapter(getContext(),rv_hot_mall);
+//        adapter_hot_mall.setItems(list_course);
+//        rv_hot_mall.setAdapter(adapter_hot_mall);
 
         adapter_course.setOnRecyclerViewItemClickListener(new BaseAdapterRecycler.OnRecyclerViewItemClickListener() {
             @Override
@@ -135,15 +135,15 @@ public class FragmentIndex extends BasePresenterFragment<IndexPresenter> impleme
                 startActivity(intent);
             }
         });
-        adapter_hot_mall.setOnRecyclerViewItemClickListener(new BaseAdapterRecycler.OnRecyclerViewItemClickListener() {
-            @Override
-            public void onItemClick(View view, int position) {
-                //跳转商品详情
-                Intent intent = new Intent(getActivity(),CourseDetailActivity.class);
-                intent.putExtra("","");
-                startActivity(intent);
-            }
-        });
+//        adapter_hot_mall.setOnRecyclerViewItemClickListener(new BaseAdapterRecycler.OnRecyclerViewItemClickListener() {
+//            @Override
+//            public void onItemClick(View view, int position) {
+//                //跳转商品详情
+//                Intent intent = new Intent(getActivity(),CourseDetailActivity.class);
+//                intent.putExtra("","");
+//                startActivity(intent);
+//            }
+//        });
     }
 
     @Override
@@ -170,15 +170,15 @@ public class FragmentIndex extends BasePresenterFragment<IndexPresenter> impleme
         banner_index.setIndicatorGravity(BannerConfig.CENTER);
         banner_course.setIndicatorGravity(BannerConfig.CENTER);
         banner_agency.setIndicatorGravity(BannerConfig.CENTER);
-        banner_hot_mall.setIndicatorGravity(BannerConfig.CENTER);
+//        banner_hot_mall.setIndicatorGravity(BannerConfig.CENTER);
         banner_index.setOnBannerListener(this);
         banner_course.setOnBannerListener(this);
         banner_agency.setOnBannerListener(this);
-        banner_hot_mall.setOnBannerListener(this);
+//        banner_hot_mall.setOnBannerListener(this);
         banner_index.setImages(imgs).setImageLoader(new GlideImageLoader(false)).start() ;
         banner_course.setImages(imgs).setImageLoader(new GlideImageLoader(true)).start() ;
         banner_agency.setImages(imgs).setImageLoader(new GlideImageLoader(true)).start() ;
-        banner_hot_mall.setImages(imgs).setImageLoader(new GlideImageLoader(true)).start() ;
+//        banner_hot_mall.setImages(imgs).setImageLoader(new GlideImageLoader(true)).start() ;
     }
 
     private void setNewsDate() {

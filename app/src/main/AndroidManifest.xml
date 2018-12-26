@@ -39,12 +39,20 @@
         <activity android:name=".ui.activity.MallDetailActivity"/>
         <activity android:name=".ui.activity.PerfectInformationActivity"/>
         <activity android:name=".ui.activity.CommunityDetailActivity"
-            android:windowSoftInputMode="adjustResize"/>
+            android:windowSoftInputMode="adjustResize"
+            android:configChanges="orientation|keyboardHidden|screenSize"/>
         <activity android:name=".ui.activity.CommunityPhotoActivity"
             android:windowSoftInputMode="adjustResize"/>
         <activity android:name=".ui.activity.NewReleaseActivity"/>
         <activity android:name=".ui.activity.SearchActivity"/>
         <activity android:name=".ui.activity.MallCarActivity"/>
+        <activity android:name=".ui.activity.FirmOrderActivity"/>
+        <activity android:name=".ui.activity.SelectAddressActivity"/>
+        <activity android:name=".ui.activity.AddAddressActivity"/>
+        <activity android:name=".ui.activity.PersonalInfoActivity"/>
+        <activity android:name=".ui.activity.YiJianActivity"/>
+        <activity android:name=".ui.activity.MyCommunityActivity"/>
+        <activity android:name=".ui.activity.MyTrainActivity"/>
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="${applicationId}.provider"

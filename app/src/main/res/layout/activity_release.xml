@@ -7,19 +7,22 @@
     <EditText
         android:id="@+id/et_content"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:background="@null"
+        android:minLines="6"
         android:gravity="start"
         android:hint="输入要发表的内容"
         style="@style/defultPadding"
         android:paddingTop="5dp"
         android:textColor="@color/text_black"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:textSize="14sp"/>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_img"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"></android.support.v7.widget.RecyclerView>
     <LinearLayout
         style="@style/defultPadding"
         android:layout_width="match_parent"
@@ -104,6 +107,12 @@
             android:src="@mipmap/icon_search"
             android:layout_gravity="center_vertical"/>
     </LinearLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_hot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </android.support.v7.widget.RecyclerView>
 
     <TextView
         android:layout_width="wrap_content"
@@ -114,4 +123,10 @@
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:textColor="@color/text_gray"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_join"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </android.support.v7.widget.RecyclerView>
 </LinearLayout>

@@ -39,14 +39,14 @@ import io.reactivex.functions.Consumer;
  * Created by zt on 2018/5/8.
  */
 
-public class NewReleaseActivity extends BasePresenterActivity<NewReleasePresenter> implements NewReleaseView {
+public class NewReleaseActivity extends BasePresenterActivity<NewReleasePresenter> implements NewReleaseView,NewReleaseImgAdapter.onAddPicClickListener {
 
     private TextView tv_title,tv_function ;
     private ImageView iv_back,iv_search;
     private LinearLayout ll_pic ;
     private LinearLayout ll_video ;
     private EditText et_content ;
-    private RecyclerView rv_img ;
+    private RecyclerView rv_img ,rv_hot,rv_join;
 
 //    private UploadManager uploadManager;
     private List<LocalMedia> selectList ;
@@ -82,8 +82,11 @@ public class NewReleaseActivity extends BasePresenterActivity<NewReleasePresente
         tv_title = findViewById(R.id.tv_title);
         et_content = findViewById(R.id.et_content);
         rv_img = findViewById(R.id.rv_img);
+        rv_hot = findViewById(R.id.rv_hot);
+        rv_join = findViewById(R.id.rv_join);
 
         iv_back.setOnClickListener(onClick);
+        iv_search.setOnClickListener(onClick);
         tv_function.setOnClickListener(onClick);
         ll_pic.setOnClickListener(onClick);
         ll_video.setOnClickListener(onClick);
@@ -94,10 +97,11 @@ public class NewReleaseActivity extends BasePresenterActivity<NewReleasePresente
         manager = new GridLayoutManager(this, 3);
         rv_img.setLayoutManager(manager);
 
-        adapter = new NewReleaseImgAdapter(this);
+        adapter = new NewReleaseImgAdapter(this,this);
         adapter.setList(selectList);
         adapter.setSelectMax(maxPicSelectNum);
         rv_img.setAdapter(adapter);
+        rv_img.setVisibility(View.GONE);
 
         /*上传文件管理*/
 //        uploadManager = UploadManager.getInstance();
@@ -128,26 +132,26 @@ public class NewReleaseActivity extends BasePresenterActivity<NewReleasePresente
             }
         });
 
-        /*字数限制监听*/
-        et_content.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-                int num = 300 ;
-                int num1 = num - charSequence.length() ;
-                String str_num = String.valueOf(num1);
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
+//        /*字数限制监听*/
+//        et_content.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//
+//                int num = 300 ;
+//                int num1 = num - charSequence.length() ;
+//                String str_num = String.valueOf(num1);
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable editable) {
+//
+//            }
+//        });
     }
 
     @Override
@@ -422,6 +426,7 @@ public class NewReleaseActivity extends BasePresenterActivity<NewReleasePresente
                     }
                     adapter.setList(selectList);
                     adapter.notifyDataSetChanged();
+                    rv_img.setVisibility(View.VISIBLE);
                     break;
 
                 case REQUEST_CODE :
@@ -432,6 +437,11 @@ public class NewReleaseActivity extends BasePresenterActivity<NewReleasePresente
                     break;
             }
         }
+    }
+
+    @Override
+    public void onAddPicClick() {
+        takePic("local");
     }
 
 //    @Override

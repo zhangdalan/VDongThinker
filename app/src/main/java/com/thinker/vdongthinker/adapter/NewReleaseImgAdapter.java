@@ -29,7 +29,7 @@ public class NewReleaseImgAdapter extends RecyclerView.Adapter<NewReleaseImgAdap
     public static final int TYPE_PICTURE = 2;
     private LayoutInflater mInflater;
     private List<LocalMedia> list = new ArrayList<>();
-    private int selectMax = 6;
+    private int selectMax = 9;
     private Context context;
     /**
      * 点击添加图片跳转
@@ -95,7 +95,7 @@ public class NewReleaseImgAdapter extends RecyclerView.Adapter<NewReleaseImgAdap
     @Override
     public int getItemCount() {
         if (list.size() < selectMax) {
-            return list.size();
+            return list.size()+1;
         } else {
             return list.size();
         }
@@ -132,14 +132,20 @@ public class NewReleaseImgAdapter extends RecyclerView.Adapter<NewReleaseImgAdap
     @Override
     public void onBindViewHolder(final ViewHolder viewHolder, final int position) {
 
-        //少于8张，显示继续添加的图标
+        //少于9张，显示继续添加的图标
         if (getItemViewType(position) == TYPE_CAMERA) {
+            viewHolder.mImg.setImageResource(R.mipmap.img_add);
             viewHolder.mImg.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     mOnAddPicClickListener.onAddPicClick();
                 }
             });
+            LinearLayout.LayoutParams params= (LinearLayout.LayoutParams) viewHolder.mImg.getLayoutParams();
+            int widthPixels = context.getResources().getDisplayMetrics().widthPixels;
+            //获取当前控件的布局对象
+            params.height=(widthPixels-20)/3;//设置当前控件布局的高度width是屏幕宽度
+            viewHolder.mImg.setLayoutParams(params);//将设置好的布局参数应用到控件中
 //            viewHolder.ll_del.setVisibility(View.INVISIBLE);
         } else {
 //            viewHolder.ll_del.setVisibility(View.VISIBLE);
@@ -194,26 +200,26 @@ public class NewReleaseImgAdapter extends RecyclerView.Adapter<NewReleaseImgAdap
 //            if (mimeType == PictureMimeType.ofAudio()) {
 //                viewHolder.mImg.setImageResource(R.drawable.audio_placeholder);
 //            } else {
-                RequestOptions options = new RequestOptions()
-                        .centerCrop()
+            RequestOptions options = new RequestOptions()
+                    .centerCrop()
 //                        .placeholder(ContextCompat.getDrawable(context , R.color.color_f6))
-                        .skipMemoryCache(true)       //不适用内存缓存
-                        .diskCacheStrategy(DiskCacheStrategy.NONE);      //不使用磁盘缓存
-                /*设置每张图占屏幕一半*/
-                ViewGroup.LayoutParams lp = viewHolder.mImg.getLayoutParams();
-                int widthPixels = context.getResources().getDisplayMetrics().widthPixels;
-                lp.width = widthPixels/3 ;
-                lp.height = widthPixels/3 ;
-                viewHolder.mImg.setLayoutParams(lp);
-                viewHolder.mImg.setMaxWidth(widthPixels);
-                viewHolder.mImg.setMaxHeight(widthPixels);
+                    .skipMemoryCache(true)       //不适用内存缓存
+                    .diskCacheStrategy(DiskCacheStrategy.NONE);      //不使用磁盘缓存
+            /*设置每张图占屏幕1/3*/
+            ViewGroup.LayoutParams lp = viewHolder.mImg.getLayoutParams();
+            int widthPixels = context.getResources().getDisplayMetrics().widthPixels;
+            lp.width = (widthPixels-20)/3 ;
+            lp.height = (widthPixels-20)/3 ;
+            viewHolder.mImg.setLayoutParams(lp);
+            viewHolder.mImg.setMaxWidth(widthPixels);
+            viewHolder.mImg.setMaxHeight(widthPixels);
 
-                Glide.with(viewHolder.itemView.getContext())
+            Glide.with(viewHolder.itemView.getContext())
                         .load(path)
                         .apply(options)
                         .into(viewHolder.mImg);
-            }
-            //itemView 的点击事件
+        }
+        //itemView 的点击事件
             if (mItemClickListener != null) {
                 viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override

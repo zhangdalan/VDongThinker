@@ -1,7 +1,7 @@
 package com.thinker.vdongthinker.bean;
 
 /**
- * Created by zt on 2018/12/10.
+ *
  */
 
 public class AgencyMallRecyclerBean {

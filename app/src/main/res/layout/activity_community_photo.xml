@@ -110,6 +110,7 @@
                     android:background="@color/white"
                     android:layout_marginTop="5dp"/>
                 <TextView
+                    android:id="@+id/tv_content"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
@@ -138,7 +139,8 @@
                         android:layout_marginLeft="10dp"
                         android:textColorHint="@color/text_gray2"
                         android:padding="10dp"
-                        android:textSize="15sp"/>
+                        android:textSize="15sp"
+                        android:enabled="false"/>
 
                     <ImageView
                         android:id="@+id/iv_zank"

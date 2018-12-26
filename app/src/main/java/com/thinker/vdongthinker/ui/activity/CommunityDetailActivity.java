@@ -13,19 +13,26 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.thinker.vdongthinker.R;
 import com.thinker.vdongthinker.adapter.CommunityAssessListViewAdapter;
 import com.thinker.vdongthinker.adapter.CommunityPhotoGridViewAdapter;
 import com.thinker.vdongthinker.adapter.CourseAssessListViewAdapter;
 import com.thinker.vdongthinker.adapter.CoursePhotoGridViewAdapter;
 import com.thinker.vdongthinker.base.BasePresenterActivity;
+import com.thinker.vdongthinker.base.Constants;
+import com.thinker.vdongthinker.bean.CommunityBean;
 import com.thinker.vdongthinker.bean.CourseAssessBean;
 import com.thinker.vdongthinker.customControl.MeasureGridView;
 import com.thinker.vdongthinker.customControl.MeasureListView;
 import com.thinker.vdongthinker.presenter.CommunityDetailPresenter;
 import com.thinker.vdongthinker.tool.Util;
 import com.thinker.vdongthinker.view.CommunityDetailView;
+import com.xiao.nicevideoplayer.NiceVideoPlayer;
+import com.xiao.nicevideoplayer.NiceVideoPlayerManager;
+import com.xiao.nicevideoplayer.TxVideoPlayerController;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +45,6 @@ public class CommunityDetailActivity extends BasePresenterActivity<CommunityDeta
     private ImageView iv_back;
     private TextView tv_name,tv_type,tv_content,tv_assess_num;
     private EditText et_assess;
-    private View view_background;
     private MeasureGridView gv_photo;
     private MeasureListView lv_assess;
     private LinearLayout layout_send;
@@ -48,16 +54,24 @@ public class CommunityDetailActivity extends BasePresenterActivity<CommunityDeta
     private List<CourseAssessBean> list_assess;
     private CommunityAssessListViewAdapter adapter_assess;
     private InputMethodManager imm;
+    private NiceVideoPlayer mPlayer;
+    private CommunityBean bean;
+    private int IS_VEDIO;
 
     @Override
     public void initData() {
+        bean = (CommunityBean) getIntent().getSerializableExtra("bean");
+        IS_VEDIO = bean.getVideo();
+
         iv_back = findViewById(R.id.iv_back);
+        iv_back.setOnClickListener(this);
         tv_name = findViewById(R.id.tv_name);
         et_assess = findViewById(R.id.et_assess);
         et_assess.setOnClickListener(this);
-        view_background = findViewById(R.id.view_background);
-        view_background.setBackgroundResource(R.color.trans);
-        view_background.setOnClickListener(this);
+        et_assess.setEnabled(false);
+//        view_background = findViewById(R.id.view_background);
+//        view_background.setBackgroundResource(R.color.trans);
+//        view_background.setOnClickListener(this);
         tv_type = findViewById(R.id.tv_type);
         tv_content = findViewById(R.id.tv_content);
         tv_assess_num = findViewById(R.id.tv_assess_num);
@@ -66,11 +80,48 @@ public class CommunityDetailActivity extends BasePresenterActivity<CommunityDeta
         layout_send = findViewById(R.id.layout_send);
         fl_send = findViewById(R.id.fl_send);
         Util.buttonBeyondKeyboardLayout(fl_send,layout_send);
-        setList();
+        mPlayer = findViewById(R.id.mPlayer);
         onReplay(0);
+        if (IS_VEDIO == 0){
+            initPlayer();
+        }else{
+            setList();
+        }
     }
 
+    private void initPlayer() {
+        mPlayer.setVisibility(View.VISIBLE);
+        gv_photo.setVisibility(View.GONE);
+        mPlayer.setPlayerType(NiceVideoPlayer.TYPE_IJK);  //NiceVideoPlayer.IJKPlayer    or   NiceVideoPlayer.TYPE_NATIVE
+        mPlayer.setUp(Constants.TEXT_VEDIO_URL,null);  //设置播放地址
+        TxVideoPlayerController controller = new TxVideoPlayerController(this);
+        controller.setTitle("测试小窗播放视频标题");  // controller为蒙版层，用于设置视频标题
+//        controller.setLenght(98000);  //时间以mm为单位计算
+//        Glide.with(this).load(Const.testUrl.VIDEOIMG1)
+//                .placeholder(R.color.trans_70black)
+//                .crossFade()
+//                .into(controller.imageView()); //加载视频图片到蒙版上
+        mPlayer.setController(controller);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        // 在onStop时释放掉播放器
+        NiceVideoPlayerManager.instance().releaseNiceVideoPlayer();
+    }
+    @Override
+    public void onBackPressed() {
+        // 在全屏或者小窗口时按返回键要先退出全屏或小窗口，
+        // 所以在Activity中onBackPress要交给NiceVideoPlayer先处理。
+        if (NiceVideoPlayerManager.instance().onBackPressd()) return;
+        super.onBackPressed();
+    }
     private void setList() {
+
+        mPlayer.setVisibility(View.VISIBLE);
+        gv_photo.setVisibility(View.GONE);
+
         list_photo = new ArrayList<>();
         List<Integer> list_show = new ArrayList<>();
         for (int i = 0;i<4;i++){
@@ -87,7 +138,10 @@ public class CommunityDetailActivity extends BasePresenterActivity<CommunityDeta
         gv_photo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                startActivity(new Intent(CommunityDetailActivity.this,CommunityPhotoActivity.class));
+                Intent intent = new Intent(CommunityDetailActivity.this,CommunityPhotoActivity.class);
+                intent.putExtra("bean",bean);
+                intent.putExtra("current",position+1);
+                startActivity(intent);
             }
         });
 
@@ -121,7 +175,7 @@ public class CommunityDetailActivity extends BasePresenterActivity<CommunityDeta
         imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
 
-        view_background.setVisibility(View.VISIBLE);
+//        view_background.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -130,13 +184,8 @@ public class CommunityDetailActivity extends BasePresenterActivity<CommunityDeta
             case R.id.iv_back:
                 finish();
                 break;
-            case R.id.view_background:
-//                view_background.setBackgroundResource(R.color.trans);
-                view_background.setVisibility(View.GONE);
-                break;
             case R.id.et_assess:
-//                view_background.setBackgroundResource(R.color.trans_30black);
-                view_background.setVisibility(View.VISIBLE);
+                Toast.makeText(this,"该功能暂未开放...",Toast.LENGTH_SHORT);
                 break;
 
         }

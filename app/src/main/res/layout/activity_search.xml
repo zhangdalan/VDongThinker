@@ -57,6 +57,7 @@
         </LinearLayout>
     </LinearLayout>
         <TextView
+            android:id="@+id/tv_hot"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="#推荐话题#"
@@ -65,12 +66,12 @@
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
             android:textColor="@color/text_orange"/>
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_topic_hot"
+    <com.thinker.vdongthinker.customControl.AutoTagView
+        android:id="@+id/atv_topic_hot"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-    </android.support.v7.widget.RecyclerView>
+    </com.thinker.vdongthinker.customControl.AutoTagView>
 
     <LinearLayout
         android:id="@+id/ll_join"
@@ -78,6 +79,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <TextView
+            android:id="@+id/tv_topic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="#参与话题#"
@@ -86,12 +88,12 @@
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
             android:textColor="@color/text_gray"/>
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_topic_join"
+        <com.thinker.vdongthinker.customControl.AutoTagView
+            android:id="@+id/atv_topic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-        </android.support.v7.widget.RecyclerView>
+        </com.thinker.vdongthinker.customControl.AutoTagView>
     </LinearLayout>
 
     <TextView
@@ -104,26 +106,4 @@
         android:textColor="@color/text_gray"
         android:textSize="16sp"
         android:visibility="gone"/>
-    <LinearLayout
-        android:id="@+id/ll_search"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:visibility="gone">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="你是不是要找..."
-            android:textSize="14sp"
-            android:paddingLeft="15dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:textColor="@color/text_gray2"/>
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_topic"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        </android.support.v7.widget.RecyclerView>
-    </LinearLayout>
 </LinearLayout>

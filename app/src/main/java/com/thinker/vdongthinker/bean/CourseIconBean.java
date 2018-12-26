@@ -1,7 +1,7 @@
 package com.thinker.vdongthinker.bean;
 
 /**
- * Created by zt on 2018/12/11.
+ *
  */
 
 public class CourseIconBean {

@@ -72,13 +72,13 @@ public class MainActivity extends BasePresenterActivity<MainPresenter> implement
         list_fragment.add(new FragmentCourse()) ;
         list_fragment.add(new FragmentAgency()) ;
         list_fragment.add(new FragmentCommunity()) ;
-        list_fragment.add(new FragmentMall()) ;
+//        list_fragment.add(new FragmentMall()) ;
 
         FragmentManager fm = getSupportFragmentManager();
         fragment_adapter = new MyPageAdapter(fm,list_fragment);
         fl_content.setAdapter(fragment_adapter);
         fl_content.setCurrentItem(0);
-        fl_content.setOffscreenPageLimit(5);
+        fl_content.setOffscreenPageLimit(4);
         fl_content.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -100,9 +100,9 @@ public class MainActivity extends BasePresenterActivity<MainPresenter> implement
                     case 3:
                         onClick(rl_community);
                         break;
-                    case 4:
-                        onClick(rl_mall);
-                        break;
+//                    case 4:
+//                        onClick(rl_mall);
+//                        break;
                 }
             }
 
@@ -144,12 +144,12 @@ public class MainActivity extends BasePresenterActivity<MainPresenter> implement
                 tv_community.setTextColor(getResources().getColor(R.color.background_orange));
                 fl_content.setCurrentItem(3);
                 break;
-            case R.id.rl_mall:
-                selectClear();
-                iv_mall.setImageResource(R.mipmap.icon_mall_on);
-                tv_mall.setTextColor(getResources().getColor(R.color.background_orange));
-                fl_content.setCurrentItem(4);
-                break;
+//            case R.id.rl_mall:
+//                selectClear();
+//                iv_mall.setImageResource(R.mipmap.icon_mall_on);
+//                tv_mall.setTextColor(getResources().getColor(R.color.background_orange));
+//                fl_content.setCurrentItem(4);
+//                break;
         }
     }
 
@@ -162,7 +162,7 @@ public class MainActivity extends BasePresenterActivity<MainPresenter> implement
         tv_organization.setTextColor(getResources().getColor(R.color.text_black));
         iv_community.setImageResource(R.mipmap.icon_community_no);
         tv_community.setTextColor(getResources().getColor(R.color.text_black));
-        iv_mall.setImageResource(R.mipmap.icon_mall_no);
-        tv_mall.setTextColor(getResources().getColor(R.color.text_black));
+//        iv_mall.setImageResource(R.mipmap.icon_mall_no);
+//        tv_mall.setTextColor(getResources().getColor(R.color.text_black));
     }
 }
