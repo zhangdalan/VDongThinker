@@ -33,6 +33,7 @@ public abstract class BaseFragment extends Fragment implements IView {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         contentView = inflater.inflate(getLauoutID() ,null);
+
         return contentView;
     }
 

@@ -2,7 +2,8 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/background_index">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="45dp">
@@ -47,15 +48,22 @@
                     android:layout_alignParentRight="true"/>
 
             </RelativeLayout>
+
             <TextView
                 android:id="@+id/tv_cancle"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:text="取消"
+                android:textColor="@color/text_gray"
                 android:textSize="14sp"
-                android:textColor="@color/text_gray" />
+                android:gravity="center_vertical"/>
         </LinearLayout>
     </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ll_hot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
         <TextView
             android:id="@+id/tv_hot"
             android:layout_width="wrap_content"
@@ -69,10 +77,12 @@
     <com.thinker.vdongthinker.customControl.AutoTagView
         android:id="@+id/atv_topic_hot"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp">
 
     </com.thinker.vdongthinker.customControl.AutoTagView>
-
+    </LinearLayout>
     <LinearLayout
         android:id="@+id/ll_join"
         android:layout_width="match_parent"
@@ -91,7 +101,9 @@
         <com.thinker.vdongthinker.customControl.AutoTagView
             android:id="@+id/atv_topic"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp">
 
         </com.thinker.vdongthinker.customControl.AutoTagView>
     </LinearLayout>
@@ -106,4 +118,6 @@
         android:textColor="@color/text_gray"
         android:textSize="16sp"
         android:visibility="gone"/>
+    <include layout="@layout/layout_search_list"
+        android:id="@+id/ll_search_content"/>
 </LinearLayout>

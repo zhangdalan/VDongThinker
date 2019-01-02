@@ -140,10 +140,10 @@
                         android:textColorHint="@color/text_gray2"
                         android:padding="10dp"
                         android:textSize="15sp"
-                        android:enabled="false"/>
+                        android:focusable="false"/>
 
                     <ImageView
-                        android:id="@+id/iv_zank"
+                        android:id="@+id/iv_zan"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@mipmap/icon_zan_no"

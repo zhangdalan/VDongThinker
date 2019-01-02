@@ -24,5 +24,9 @@ public abstract class BasePresenterFragment<T extends BaseFragmentPresenter> ext
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initPresenter();
+        setStatusBar();
+    }
+    public void setStatusBar() {
+
     }
 }

@@ -53,6 +53,10 @@
         <activity android:name=".ui.activity.YiJianActivity"/>
         <activity android:name=".ui.activity.MyCommunityActivity"/>
         <activity android:name=".ui.activity.MyTrainActivity"/>
+        <activity android:name=".ui.activity.MessageActivity"/>
+        <activity android:name=".ui.activity.MessageZanActivity"/>
+        <activity android:name=".ui.activity.MessageAssessActivity"/>
+        <activity android:name=".ui.activity.MessageReplayActivity"/>
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="${applicationId}.provider"

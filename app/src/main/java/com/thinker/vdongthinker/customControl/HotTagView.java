@@ -26,7 +26,7 @@ public class HotTagView extends LinearLayout {
         tv_tag = findViewById(R.id.tv_tag);
     }
     public void setTagText(String tag) {
-        tv_tag.setText(tag);
+        tv_tag.setText("#"+tag+"#");
     }
     public void setTextColor(int color) {
         tv_tag.setTextColor(color);

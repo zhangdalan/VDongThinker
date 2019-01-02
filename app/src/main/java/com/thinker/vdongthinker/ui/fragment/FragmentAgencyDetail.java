@@ -32,7 +32,7 @@ public class FragmentAgencyDetail extends BasePresenterFragment<AgencyDetailFrag
     private MeasureGridView gv_photo;
     private MeasureListView lv_assess;
     private CoursePhotoGridViewAdapter adapter_gv ;
-    private List<Integer> list_photo;
+    private List<String> list_photo;
     private CourseAssessListViewAdapter adapter_assess;
     private List<CourseAssessBean> list_assess;
     private boolean IS_MORE = false;
@@ -64,7 +64,7 @@ public class FragmentAgencyDetail extends BasePresenterFragment<AgencyDetailFrag
     private void setList() {
         list_photo = new ArrayList<>();
         for (int i = 0;i<4;i++){
-            list_photo.add(R.mipmap.img_defult_mall);
+            list_photo.add("http://a.hiphotos.baidu.com/image/h%3D300/sign=194caab2b50e7bec3cda05e11f2fb9fa/960a304e251f95caf1852c0bc4177f3e6709521e.jpg");
         }
         adapter_gv = new CoursePhotoGridViewAdapter(mPresenter.mContext);
         adapter_gv.setItems(list_photo);

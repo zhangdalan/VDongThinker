@@ -5,10 +5,12 @@ import android.os.Handler;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.jaeger.library.StatusBarUtil;
 import com.thinker.vdongthinker.R;
 import com.thinker.vdongthinker.adapter.AgencyRecyclerAdapter;
 import com.thinker.vdongthinker.adapter.BaseAdapterRecycler;
@@ -27,6 +29,8 @@ import com.thinker.vdongthinker.ui.activity.AgencyDetailActivity;
 import com.thinker.vdongthinker.ui.activity.AgencyTypeActivity;
 import com.thinker.vdongthinker.ui.activity.CourseDetailActivity;
 import com.thinker.vdongthinker.ui.activity.CourseTypeActivity;
+import com.thinker.vdongthinker.ui.activity.PersonalInfoActivity;
+import com.thinker.vdongthinker.ui.activity.SearchActivity;
 import com.thinker.vdongthinker.view.IndexView;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
@@ -54,12 +58,16 @@ public class FragmentIndex extends BasePresenterFragment<IndexPresenter> impleme
     private AutoTextView tv_news;
     private List<String> list_news;
     private TextView tv_course_more,tv_agency_more,tv_mall_more;
+    private View fake_statusbar_view;
+    private ImageView iv_touxiang;
 
     @Override
     public void initData() {
+        fake_statusbar_view = contentView.findViewById(R.id.fake_statusbar_view);
         sv_index = contentView.findViewById(R.id.sv_index);
         sv_index.setScrollViewListener(this);
         layout_search = contentView.findViewById(R.id.layout_search);
+        layout_search.setOnClickListener(this);
         ll_content = contentView.findViewById(R.id.ll_content);
         view_background = contentView.findViewById(R.id.view_background);
         view_background.setAlpha(0.0f);
@@ -74,9 +82,11 @@ public class FragmentIndex extends BasePresenterFragment<IndexPresenter> impleme
         tv_course_more = contentView.findViewById(R.id.tv_course_more);
         tv_agency_more = contentView.findViewById(R.id.tv_agency_more);
         tv_mall_more = contentView.findViewById(R.id.tv_mall_more);
+        iv_touxiang = contentView.findViewById(R.id.iv_touxiang);
         tv_course_more.setOnClickListener(this);
         tv_agency_more.setOnClickListener(this);
         tv_mall_more.setOnClickListener(this);
+        iv_touxiang.setOnClickListener(this);
         setRecycler();
 
         setBannerDate();
@@ -216,6 +226,17 @@ public class FragmentIndex extends BasePresenterFragment<IndexPresenter> impleme
             Constants.alpha = 1.0f;
         }
         view_background.setAlpha(Constants.alpha);
+
+        fake_statusbar_view.setAlpha(Constants.alpha);
+    }
+
+    @Override
+    public void setStatusBar() {
+        super.setStatusBar();
+//        StatusBarUtil.setTransparent(mPresenter.mActivity);
+//        StatusBarUtil.setTranslucent(mPresenter.mActivity,0);
+        StatusBarUtil.setTranslucentForImageViewInFragment(mPresenter.mActivity,0, null);
+        fake_statusbar_view.setAlpha(0);
     }
 
     @Override
@@ -231,6 +252,14 @@ public class FragmentIndex extends BasePresenterFragment<IndexPresenter> impleme
             case R.id.tv_mall_more:
 //                startActivity(new Intent(mPresenter.mActivity, CourseTypeActivity.class));
 
+                break;
+            case R.id.layout_search:
+                Intent intent = new Intent(mPresenter.mContext,SearchActivity.class);
+                intent.putExtra("PAGE_TYPE",1);
+                startActivity(intent);
+                break;
+            case R.id.iv_touxiang:
+                startActivity(new Intent(mPresenter.mActivity, PersonalInfoActivity.class));
                 break;
         }
     }

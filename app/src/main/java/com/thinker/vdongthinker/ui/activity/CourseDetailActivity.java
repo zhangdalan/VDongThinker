@@ -37,7 +37,7 @@ public class CourseDetailActivity extends BasePresenterActivity<CourseDetailPres
     private boolean IS_MORE = false;
     private Button btn_buy,btn_assess_more;
     private CoursePhotoGridViewAdapter adapter_gv ;
-    private List<Integer> list_photo;
+    private List<String> list_photo;
     private CourseAssessListViewAdapter adapter_assess;
     private List<CourseAssessBean> list_assess;
     @Override
@@ -46,7 +46,7 @@ public class CourseDetailActivity extends BasePresenterActivity<CourseDetailPres
         tv_title.setText("课程详情");
         iv_back = findViewById(R.id.iv_back);
         iv_back.setOnClickListener(this);
-        iv_funcation = findViewById(R.id.iv_funcation);
+        iv_funcation = findViewById(R.id.iv_function);
         iv_funcation.setOnClickListener(this);
         iv_call = findViewById(R.id.iv_call);
         iv_call.setOnClickListener(this);
@@ -80,7 +80,7 @@ public class CourseDetailActivity extends BasePresenterActivity<CourseDetailPres
     private void setList() {
         list_photo = new ArrayList<>();
         for (int i = 0;i<4;i++){
-            list_photo.add(R.mipmap.img_defult_mall);
+            list_photo.add("http://a.hiphotos.baidu.com/image/h%3D300/sign=194caab2b50e7bec3cda05e11f2fb9fa/960a304e251f95caf1852c0bc4177f3e6709521e.jpg");
         }
         adapter_gv = new CoursePhotoGridViewAdapter(this);
         adapter_gv.setItems(list_photo);

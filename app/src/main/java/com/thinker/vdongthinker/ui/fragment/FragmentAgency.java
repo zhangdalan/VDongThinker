@@ -22,6 +22,7 @@ import com.thinker.vdongthinker.presenter.CoursePresenter;
 import com.thinker.vdongthinker.tool.GlideImageLoader;
 import com.thinker.vdongthinker.ui.activity.AgencyTypeActivity;
 import com.thinker.vdongthinker.ui.activity.CourseTypeActivity;
+import com.thinker.vdongthinker.ui.activity.SearchActivity;
 import com.thinker.vdongthinker.view.AgencyView;
 import com.thinker.vdongthinker.view.CourseView;
 import com.youth.banner.Banner;
@@ -31,10 +32,10 @@ import com.youth.banner.listener.OnBannerListener;
 import java.util.ArrayList;
 
 /**
- * Created by zt on 2018/12/11.
+ * Created by zjw on 2018/12/11.
  */
 
-public class FragmentAgency extends BasePresenterFragment<AgencyPresenter> implements AgencyView,OnBannerListener ,BaseAdapterRecycler.OnRecyclerViewItemClickListener{
+public class FragmentAgency extends BasePresenterFragment<AgencyPresenter> implements AgencyView,OnBannerListener ,BaseAdapterRecycler.OnRecyclerViewItemClickListener,View.OnClickListener {
     private TextView tv_city,tv_title;
     private ImageView iv_search,iv_back;
     private RecyclerView rv_course,rv_1,rv_2,rv_3;
@@ -56,6 +57,7 @@ public class FragmentAgency extends BasePresenterFragment<AgencyPresenter> imple
         tv_title.setText("机构");
         tv_city = contentView.findViewById(R.id.tv_city);
         iv_search = contentView.findViewById(R.id.iv_search);
+        iv_search.setOnClickListener(this);
         iv_back = contentView.findViewById(R.id.iv_back);
         iv_back.setVisibility(View.GONE);
         rv_course = contentView.findViewById(R.id.rv_course);
@@ -80,7 +82,7 @@ public class FragmentAgency extends BasePresenterFragment<AgencyPresenter> imple
 
     @Override
     public int getLauoutID() {
-        return R.layout.fragment_course;
+        return R.layout.fragment_agency;
     }
 
     @Override
@@ -163,6 +165,18 @@ public class FragmentAgency extends BasePresenterFragment<AgencyPresenter> imple
             case R.id.rv_course:
                 Intent intent = new Intent(getActivity(), AgencyTypeActivity.class);
                 intent.putExtra("type",list_course.get(position).getName());
+                startActivity(intent);
+                break;
+
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.iv_search:
+                Intent intent = new Intent(mPresenter.mContext,SearchActivity.class);
+                intent.putExtra("PAGE_TYPE",2);
                 startActivity(intent);
                 break;
         }

@@ -21,13 +21,13 @@ import java.util.ArrayList;
 
 
 /**
- * Created by zt on 2018/12/17.
+ * Created by zjw on 2018/12/17.
  */
 
 public class CommunityRecycleAdapter extends BaseAdapterRecycler<CommunityBean> {
     private RecyclerView.LayoutManager layoutManager;
     private Context mContext;
-    private ArrayList<Integer> list_photo;
+    private ArrayList<String> list_photo;
     private CoursePhotoGridViewAdapter adapter_gv;
 
     public CommunityRecycleAdapter(Context context, RecyclerView recyclerView) {
@@ -52,16 +52,13 @@ public class CommunityRecycleAdapter extends BaseAdapterRecycler<CommunityBean> 
             viewHolder.rv_video.setVisibility(View.GONE);
             viewHolder.gv_photo.setVisibility(View.VISIBLE);
 
-            list_photo = new ArrayList<>();
-            for (int i = 0;i<4;i++){
-                list_photo.add(R.mipmap.img_defult_mall);
-            }
+            list_photo = (ArrayList<String>) bean.getList_img();
             adapter_gv = new CoursePhotoGridViewAdapter(mContext);
             adapter_gv.setItems(list_photo);
             viewHolder.gv_photo.setAdapter(adapter_gv);
             viewHolder.gv_photo.setOverScrollMode(View.OVER_SCROLL_NEVER);
         }
-        viewHolder.tv_zan_num.setText(bean.getIS_ZAN());
+        viewHolder.tv_zan_num.setText(bean.getIS_ZAN()+"");
         Glide.with(mContext).load(R.mipmap.icon_mall_on).apply(new RequestOptions().circleCrop()).into(viewHolder.iv_touxiang);
         viewHolder.rv_video.setOnClickListener(new View.OnClickListener() {
             @Override

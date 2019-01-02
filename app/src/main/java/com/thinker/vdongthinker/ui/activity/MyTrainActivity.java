@@ -35,8 +35,8 @@ import java.util.ArrayList;
 public class MyTrainActivity extends BasePresenterActivity<MyTrainPresenter> implements MyTrainView,View.OnClickListener,MyCourseAdapter.OnMallItemClickListener {
     private ImageView iv_back;
     private LinearLayout ll_course,ll_agency;
-    private View line1,line2;
     private TextView tv_title,tv_course,tv_agency;
+    private View line1,line2;
     private RecyclerView rv_course,rv_agency;
     private ArrayList<MyCourseBean> list_course;
     private ArrayList<MyAgencyBean> list_agency;

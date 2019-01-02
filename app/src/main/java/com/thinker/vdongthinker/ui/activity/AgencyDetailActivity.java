@@ -33,7 +33,7 @@ public class AgencyDetailActivity extends BasePresenterActivity<AgencyDetailPres
     @Override
     public void initData() {
         iv_back = findViewById(R.id.iv_back);
-        iv_funcation = findViewById(R.id.iv_funcation);
+        iv_funcation = findViewById(R.id.iv_function);
         tv_detail = findViewById(R.id.tv_detail);
         tv_course = findViewById(R.id.tv_course);
         vp_content = findViewById(R.id.vp_content);

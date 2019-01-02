@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.widget.Toast;
 
+import com.jaeger.library.StatusBarUtil;
 import com.thinker.vdongthinker.R;
 import com.thinker.vdongthinker.tool.NetUtils;
 import com.trello.rxlifecycle2.LifecycleTransformer;
@@ -61,6 +62,5 @@ public abstract class BaseActivity extends RxAppCompatActivity {
         };
     }
     public void setStatusBar() {
-
     }
 }

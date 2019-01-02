@@ -1,10 +1,12 @@
 package com.thinker.vdongthinker.bean;
 
+import java.io.Serializable;
+
 /**
  *
  */
 
-public class CourseAssessBean {
+public class CourseAssessBean implements Serializable {
     private String img;
     private String name;
     private String date;

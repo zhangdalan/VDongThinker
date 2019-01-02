@@ -44,6 +44,9 @@
     <string name="lable_account_safe">账户安全</string>
     <string name="lable_version">检查更新</string>
     <string name="lable_about_us">关于我们</string>
+    <string name="lable_zan">点赞</string>
+    <string name="lable_assess">评论</string>
+    <string name="lable_replay">课程回复</string>
     <string name="title_login">登录</string>
     <string name="title_register">注册</string>
     <string name="title_find_password">找回密码</string>

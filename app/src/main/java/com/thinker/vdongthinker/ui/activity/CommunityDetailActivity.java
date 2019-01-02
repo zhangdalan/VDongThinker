@@ -84,7 +84,11 @@ public class CommunityDetailActivity extends BasePresenterActivity<CommunityDeta
         onReplay(0);
         if (IS_VEDIO == 0){
             initPlayer();
+            gv_photo.setVisibility(View.GONE);
+            mPlayer.setVisibility(View.VISIBLE);
         }else{
+            gv_photo.setVisibility(View.VISIBLE);
+            mPlayer.setVisibility(View.GONE);
             setList();
         }
     }

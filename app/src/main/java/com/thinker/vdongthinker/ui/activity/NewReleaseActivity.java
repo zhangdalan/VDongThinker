@@ -39,7 +39,7 @@ import io.reactivex.functions.Consumer;
  * Created by zt on 2018/5/8.
  */
 
-public class NewReleaseActivity extends BasePresenterActivity<NewReleasePresenter> implements NewReleaseView,NewReleaseImgAdapter.onAddPicClickListener {
+public class NewReleaseActivity extends BasePresenterActivity<NewReleasePresenter> implements NewReleaseView,NewReleaseImgAdapter.onAddPicClickListener ,View.OnClickListener {
 
     private TextView tv_title,tv_function ;
     private ImageView iv_back,iv_search;
@@ -442,6 +442,17 @@ public class NewReleaseActivity extends BasePresenterActivity<NewReleasePresente
     @Override
     public void onAddPicClick() {
         takePic("local");
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.iv_search:
+                Intent intent = new Intent(this,SearchActivity.class);
+                intent.putExtra("PAGE_TYPE",0);
+                startActivity(intent);
+                break;
+        }
     }
 
 //    @Override

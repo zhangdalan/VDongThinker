@@ -9,7 +9,9 @@ import com.thinker.vdongthinker.R;
 import com.thinker.vdongthinker.adapter.MessageZanAdapter;
 import com.thinker.vdongthinker.base.BasePresenterActivity;
 import com.thinker.vdongthinker.bean.MessageZanBean;
+import com.thinker.vdongthinker.presenter.MessageAssessPresenter;
 import com.thinker.vdongthinker.presenter.MessageZanPresenter;
+import com.thinker.vdongthinker.view.MessageAssessView;
 import com.thinker.vdongthinker.view.MessageZanView;
 
 import java.util.ArrayList;
@@ -18,7 +20,7 @@ import java.util.List;
 /**
  * Created by zjw on 2018/12/28.
  */
-public class MessageZanActivity extends BasePresenterActivity<MessageZanPresenter> implements MessageZanView ,MessageZanAdapter.OnMessageZanClickListener{
+public class MessageAssessActivity extends BasePresenterActivity<MessageAssessPresenter> implements MessageAssessView,MessageZanAdapter.OnMessageZanClickListener{
     private TextView tv_title;
     private ImageView iv_back;
     private RecyclerView rv_content;
@@ -26,7 +28,7 @@ public class MessageZanActivity extends BasePresenterActivity<MessageZanPresente
     private List<MessageZanBean> list_zan;
     @Override
     public void initPresenter() {
-        mPresenter = new MessageZanPresenter();
+        mPresenter = new MessageAssessPresenter();
         mPresenter.init(this,this,this);
     }
 
@@ -38,7 +40,7 @@ public class MessageZanActivity extends BasePresenterActivity<MessageZanPresente
     @Override
     public void initData() {
         tv_title = findViewById(R.id.tv_title);
-        tv_title.setText("点赞");
+        tv_title.setText("评论");
         iv_back = findViewById(R.id.iv_back);
         iv_back.setVisibility(View.VISIBLE);
         iv_back.setOnClickListener(new View.OnClickListener() {

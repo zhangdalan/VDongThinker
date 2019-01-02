@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -16,27 +17,21 @@ import com.thinker.vdongthinker.bean.MessageZanBean;
 /**
  * Created by zjw on 2018/12/28.
  */
-public class MessageZanAdapter extends BaseAdapterRecycler<MessageZanBean> {
-    public MessageZanAdapter(Context context, RecyclerView recyclerView) {
+public class MessageAssessAdapter extends BaseAdapterRecycler<MessageZanBean> {
+    public MessageAssessAdapter(Context context, RecyclerView recyclerView) {
         super(context, recyclerView);
     }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ZanViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_message_zan,parent,false));
+        return new AssessViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_message_zan,parent,false));
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
-        ZanViewHolder viewHolder = (ZanViewHolder) holder;
+        AssessViewHolder viewHolder = (AssessViewHolder) holder;
         MessageZanBean bean = (MessageZanBean) getItem(position);
-        if(bean.getIS_VEDIO() == 0){
-            viewHolder.tv_num.setVisibility(View.VISIBLE);
-            viewHolder.rl_vedio.setVisibility(View.GONE);
-        }else{
-            viewHolder.tv_num.setVisibility(View.GONE);
-            viewHolder.rl_vedio.setVisibility(View.VISIBLE);
-        }
+
         viewHolder.iv_close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,13 +41,13 @@ public class MessageZanAdapter extends BaseAdapterRecycler<MessageZanBean> {
 
 
     }
-    class ZanViewHolder extends RecyclerView.ViewHolder {
+    class AssessViewHolder extends RecyclerView.ViewHolder {
         private ImageView iv_touxiang,iv_close;
         private TextView tv_name,tv_time,tv_content;
         private ImageView iv_img;
-        private TextView tv_num,tv_detail;
-        private RelativeLayout rl_vedio;
-        public ZanViewHolder(@NonNull View itemView) {
+        private TextView tv_detail;
+        private LinearLayout ll_replay;
+        public AssessViewHolder(@NonNull View itemView) {
             super(itemView);
             iv_touxiang = itemView.findViewById(R.id.iv_touxiang);
             iv_close = itemView.findViewById(R.id.iv_close);
@@ -60,10 +55,9 @@ public class MessageZanAdapter extends BaseAdapterRecycler<MessageZanBean> {
             tv_time = itemView.findViewById(R.id.tv_time);
             tv_content = itemView.findViewById(R.id.tv_content);
             iv_img = itemView.findViewById(R.id.iv_img);
-            tv_num = itemView.findViewById(R.id.tv_num);
             tv_detail = itemView.findViewById(R.id.tv_detail);
-            rl_vedio = itemView.findViewById(R.id.rl_vedio);
-
+            ll_replay = itemView.findViewById(R.id.ll_replay);
+            ll_replay.setVisibility(View.VISIBLE);
         }
     }
 

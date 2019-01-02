@@ -114,6 +114,12 @@ public class FragmentCourse extends BasePresenterFragment<CoursePresenter> imple
         for (int i = 0;i<4;i++){
             list_1.add(new IndexMallRecyclerBean("商品标题","1000","1111"));
         }
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),2);
+        rv_1.setLayoutManager(gridLayoutManager);
+        adapter_1 = new IndexRecyclerAdapter(getContext(),rv_1);
+        adapter_1.setItems(list_1);
+        rv_1.setAdapter(adapter_1);
+        adapter_1.setOnRecyclerViewItemClickListener(this);
         list_2 = new ArrayList<>();
         for (int i = 0;i<4;i++){
             list_2.add(new IndexMallRecyclerBean("商品标题","2000","2222"));
@@ -122,15 +128,10 @@ public class FragmentCourse extends BasePresenterFragment<CoursePresenter> imple
         for (int i = 0;i<4;i++){
             list_3.add(new IndexMallRecyclerBean("商品标题","3000","3333"));
         }
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),2);
         GridLayoutManager gridLayoutManager1 = new GridLayoutManager(getContext(),2);
         GridLayoutManager gridLayoutManager2 = new GridLayoutManager(getContext(),2);
-        rv_1.setLayoutManager(gridLayoutManager);
         rv_2.setLayoutManager(gridLayoutManager1);
         rv_3.setLayoutManager(gridLayoutManager2);
-        adapter_1 = new IndexRecyclerAdapter(getContext(),rv_1);
-        adapter_1.setItems(list_1);
-        rv_1.setAdapter(adapter_1);
         adapter_2 = new IndexRecyclerAdapter(getContext(),rv_2);
         adapter_2.setItems(list_2);
         rv_2.setAdapter(adapter_2);
@@ -138,7 +139,6 @@ public class FragmentCourse extends BasePresenterFragment<CoursePresenter> imple
         adapter_3.setItems(list_3);
         rv_3.setAdapter(adapter_3);
 
-        adapter_1.setOnRecyclerViewItemClickListener(this);
         adapter_2.setOnRecyclerViewItemClickListener(this);
         adapter_3.setOnRecyclerViewItemClickListener(this);
     }

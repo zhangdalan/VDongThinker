@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.jaeger.library.StatusBarUtil;
 import com.thinker.vdongthinker.R;
 import com.thinker.vdongthinker.base.BasePresenterActivity;
 import com.thinker.vdongthinker.presenter.MainPresenter;
@@ -115,6 +116,12 @@ public class MainActivity extends BasePresenterActivity<MainPresenter> implement
         selectClear();
         iv_index.setImageResource(R.mipmap.icon_index_on);
         tv_index.setTextColor(getResources().getColor(R.color.background_orange));
+    }
+
+    @Override
+    public void setStatusBar() {
+        super.setStatusBar();
+
     }
 
     @Override

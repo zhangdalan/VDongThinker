@@ -51,10 +51,10 @@ public class FragmentCommunity extends BasePresenterFragment<CommunityFragmentPr
         list_img.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1545734398143&di=c34340ac0ac072ae759730606b77a2bc&imgtype=0&src=http%3A%2F%2Fdiscovery.cctv.com%2F20070204%2Fimages%2F1170549068764_0013.jpg");
         list_img.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1545734398142&di=849789a816d2889dc74effbab85f0473&imgtype=0&src=http%3A%2F%2Fi0.hexun.com%2F2018-11-04%2F195094376.jpg");
         list_img.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1545734398142&di=e8c086a741dd73089c44715b8aba0411&imgtype=0&src=http%3A%2F%2Fimg2.jiemian.com%2F101%2Foriginal%2F20161219%2F148212991849952700_a580x330.jpg");
-        list_img.add("");
-        list_img.add("");
-        list_img.add("");
-        list_img.add("");
+        list_img.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1545734398144&di=b61f3bd602ec411b25cc1a110bedf65c&imgtype=0&src=http%3A%2F%2Fimg67.jc35.com%2F9%2F20161027%2F636131770524317707568.jpg");
+        list_img.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1545734398144&di=b61f3bd602ec411b25cc1a110bedf65c&imgtype=0&src=http%3A%2F%2Fimg67.jc35.com%2F9%2F20161027%2F636131770524317707568.jpg");
+        list_img.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1545734398144&di=b61f3bd602ec411b25cc1a110bedf65c&imgtype=0&src=http%3A%2F%2Fimg67.jc35.com%2F9%2F20161027%2F636131770524317707568.jpg");
+        list_img.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1545734398143&di=c34340ac0ac072ae759730606b77a2bc&imgtype=0&src=http%3A%2F%2Fdiscovery.cctv.com%2F20070204%2Fimages%2F1170549068764_0013.jpg");
         List<CourseAssessBean> list_assess = new ArrayList<>();
         for (int i = 0;i<10;i++){
             list_assess.add(new CourseAssessBean("","小仙女啊","2019-01-01","声明：本文内容由互联网用户自发贡献自行上传，本网站不拥有所有权，未作人工编辑处理，也不承担相关法律责任。"));
@@ -98,7 +98,7 @@ public class FragmentCommunity extends BasePresenterFragment<CommunityFragmentPr
     public void onGridViewClick(int position) {
         Intent intent = new Intent(mPresenter.mActivity, CommunityPhotoActivity.class);
         intent.putExtra("bean",list_comm.get(position));
-        intent.putExtra("current",position);
+        intent.putExtra("current",position+1);
         startActivity(intent);
     }
 

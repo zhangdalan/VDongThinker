@@ -3,14 +3,21 @@ package com.thinker.vdongthinker.bean;
 /**
  * Created by zjw on 2018/12/28.
  */
-public class MessageZanBean {
+public class MessageReplayBean {
     private String name;
     private String time;
     private String content;
-    private int IS_VEDIO;
+    private String sign;
 
-    public MessageZanBean(int IS_VEDIO) {
-        this.IS_VEDIO = IS_VEDIO;
+    public MessageReplayBean() {
+    }
+
+    public String getSign() {
+        return sign;
+    }
+
+    public void setSign(String sign) {
+        this.sign = sign;
     }
 
     public String getName() {
@@ -37,11 +44,4 @@ public class MessageZanBean {
         this.content = content;
     }
 
-    public int getIS_VEDIO() {
-        return IS_VEDIO;
-    }
-
-    public void setIS_VEDIO(int IS_VEDIO) {
-        this.IS_VEDIO = IS_VEDIO;
-    }
 }

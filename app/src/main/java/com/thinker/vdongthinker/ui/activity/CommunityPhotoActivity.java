@@ -15,6 +15,7 @@ import com.thinker.vdongthinker.adapter.CommunityPhotoViewAdapter;
 import com.thinker.vdongthinker.base.BasePresenterActivity;
 import com.thinker.vdongthinker.bean.CommunityBean;
 import com.thinker.vdongthinker.presenter.CommunityPhotoPresenter;
+import com.thinker.vdongthinker.tool.StatusBarUtil;
 import com.thinker.vdongthinker.tool.Util;
 import com.thinker.vdongthinker.view.CommunityPhotoView;
 
@@ -48,6 +49,7 @@ public class CommunityPhotoActivity extends BasePresenterActivity<CommunityPhoto
         iv_back = findViewById(R.id.iv_back);
         iv_back.setOnClickListener(this);
         iv_zan = findViewById(R.id.iv_zan);
+        iv_zan.setOnClickListener(this);
         tv_name = findViewById(R.id.tv_name);
         tv_page = findViewById(R.id.tv_page);
         tv_type = findViewById(R.id.tv_type);
@@ -141,5 +143,12 @@ public class CommunityPhotoActivity extends BasePresenterActivity<CommunityPhoto
 
             }
         });
+    }
+
+    @Override
+    public void setStatusBar() {
+        super.setStatusBar();
+        com.jaeger.library.StatusBarUtil.setColor(this, getResources().getColor(R.color.white));
+        com.jaeger.library.StatusBarUtil.setTranslucent(this, 0);
     }
 }

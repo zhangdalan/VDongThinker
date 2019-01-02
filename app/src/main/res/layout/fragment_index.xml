@@ -242,8 +242,19 @@
                 </LinearLayout>
             </LinearLayout>
         </com.thinker.vdongthinker.customControl.ObservableScrollView>
-        <include layout="@layout/layout_index_top"
-            android:id="@+id/layout_search" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <View
+                android:id="@+id/fake_statusbar_view"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:background="@color/colorPrimary"/>
+            <include layout="@layout/layout_index_top"
+                android:id="@+id/layout_search" />
+
+        </LinearLayout>
     </FrameLayout>
 
 
