@@ -7,20 +7,24 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.thinker.vdongthinker.R;
 import com.thinker.vdongthinker.adapter.AgencyRecyclerAdapter;
 import com.thinker.vdongthinker.adapter.CommunityRecycleAdapter;
 import com.thinker.vdongthinker.base.BasePresenterFragment;
 import com.thinker.vdongthinker.base.Constants;
-import com.thinker.vdongthinker.bean.AgencyMallRecyclerBean;
 import com.thinker.vdongthinker.bean.CommunityBean;
 import com.thinker.vdongthinker.bean.CourseAssessBean;
+import com.thinker.vdongthinker.bean.ResponseEntity;
 import com.thinker.vdongthinker.presenter.CommunityFragmentPresenter;
+import com.thinker.vdongthinker.tool.Util;
 import com.thinker.vdongthinker.ui.activity.CommunityDetailActivity;
 import com.thinker.vdongthinker.ui.activity.CommunityPhotoActivity;
 import com.thinker.vdongthinker.ui.activity.NewReleaseActivity;
 import com.thinker.vdongthinker.view.CommunityFragmentView;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,8 +35,9 @@ import java.util.List;
 public class FragmentCommunity extends BasePresenterFragment<CommunityFragmentPresenter> implements CommunityFragmentView ,CommunityRecycleAdapter.OnCommunityClickListener,View.OnClickListener{
     private ImageView iv_touxiang,iv_search,iv_add_release;
     private RecyclerView rv_community;
-    private ArrayList<CommunityBean> list_comm;
+    private List<CommunityBean> list_comm;
     private CommunityRecycleAdapter adapter_comm;
+    Gson gson = new Gson();
 
     @Override
     public void initData() {
@@ -45,28 +50,11 @@ public class FragmentCommunity extends BasePresenterFragment<CommunityFragmentPr
     }
 
     private void initList() {
-        list_comm = new ArrayList<>();
-        List<String> list_img = new ArrayList<>();
-        list_img.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1545734398144&di=b61f3bd602ec411b25cc1a110bedf65c&imgtype=0&src=http%3A%2F%2Fimg67.jc35.com%2F9%2F20161027%2F636131770524317707568.jpg");
-        list_img.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1545734398143&di=c34340ac0ac072ae759730606b77a2bc&imgtype=0&src=http%3A%2F%2Fdiscovery.cctv.com%2F20070204%2Fimages%2F1170549068764_0013.jpg");
-        list_img.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1545734398142&di=849789a816d2889dc74effbab85f0473&imgtype=0&src=http%3A%2F%2Fi0.hexun.com%2F2018-11-04%2F195094376.jpg");
-        list_img.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1545734398142&di=e8c086a741dd73089c44715b8aba0411&imgtype=0&src=http%3A%2F%2Fimg2.jiemian.com%2F101%2Foriginal%2F20161219%2F148212991849952700_a580x330.jpg");
-        list_img.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1545734398144&di=b61f3bd602ec411b25cc1a110bedf65c&imgtype=0&src=http%3A%2F%2Fimg67.jc35.com%2F9%2F20161027%2F636131770524317707568.jpg");
-        list_img.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1545734398144&di=b61f3bd602ec411b25cc1a110bedf65c&imgtype=0&src=http%3A%2F%2Fimg67.jc35.com%2F9%2F20161027%2F636131770524317707568.jpg");
-        list_img.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1545734398144&di=b61f3bd602ec411b25cc1a110bedf65c&imgtype=0&src=http%3A%2F%2Fimg67.jc35.com%2F9%2F20161027%2F636131770524317707568.jpg");
-        list_img.add("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1545734398143&di=c34340ac0ac072ae759730606b77a2bc&imgtype=0&src=http%3A%2F%2Fdiscovery.cctv.com%2F20070204%2Fimages%2F1170549068764_0013.jpg");
-        List<CourseAssessBean> list_assess = new ArrayList<>();
-        for (int i = 0;i<10;i++){
-            list_assess.add(new CourseAssessBean("","小仙女啊","2019-01-01","声明：本文内容由互联网用户自发贡献自行上传，本网站不拥有所有权，未作人工编辑处理，也不承担相关法律责任。"));
-        }
-        for (int i = 0;i<5;i++){
-            if(i == 3 || i==4){
-                        list_comm.add(new CommunityBean(0,"中思科技IT技术中心","机器人","","机器人大赛长文本长文本长文本机器人大赛长文本长文本长文本机器人大赛长文本长文本长文本",list_img
-                        ,list_assess,Constants.TEXT_VEDIO_URL,"",i,0));
-            }
-            list_comm.add(new CommunityBean(1,"中思科技IT技术中心","机器人","","机器人大赛长文本长文本长文本机器人大赛长文本长文本长文本机器人大赛长文本长文本长文本",list_img
-                    ,list_assess,Constants.TEXT_VEDIO_URL,"",i,0));
-        }
+        String json = Util.getJson("community.json",mPresenter.mContext);
+        Type type = new TypeToken<ResponseEntity<List<CommunityBean>>>() {
+        }.getType();
+        ResponseEntity<List<CommunityBean>> entity = gson.fromJson(json, type);
+        list_comm = entity.getData();
         GridLayoutManager gridLayoutManager = new GridLayoutManager(mPresenter.mContext,1);
         rv_community.setLayoutManager(gridLayoutManager);
         adapter_comm = new CommunityRecycleAdapter(mPresenter.mContext,rv_community);

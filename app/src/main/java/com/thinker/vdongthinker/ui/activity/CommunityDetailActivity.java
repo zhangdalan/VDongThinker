@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -43,13 +44,14 @@ import java.util.List;
 
 public class CommunityDetailActivity extends BasePresenterActivity<CommunityDetailPresenter> implements CommunityDetailView,CommunityAssessListViewAdapter.OnReplayClickListener,View.OnClickListener {
     private ImageView iv_back;
-    private TextView tv_name,tv_type,tv_content,tv_assess_num;
+    private TextView tv_name,tv_type,tv_content,tv_assess_num,tv_assess_no;
     private EditText et_assess;
+    private Button btn_assess_more;
     private MeasureGridView gv_photo;
     private MeasureListView lv_assess;
     private LinearLayout layout_send;
     private FrameLayout fl_send;
-    private ArrayList<Integer> list_photo;
+    private List<String> list_photo;
     private CommunityPhotoGridViewAdapter adapter_gv;
     private List<CourseAssessBean> list_assess;
     private CommunityAssessListViewAdapter adapter_assess;
@@ -61,7 +63,7 @@ public class CommunityDetailActivity extends BasePresenterActivity<CommunityDeta
     @Override
     public void initData() {
         bean = (CommunityBean) getIntent().getSerializableExtra("bean");
-        IS_VEDIO = bean.getVideo();
+        IS_VEDIO = bean.getIsVideo();
 
         iv_back = findViewById(R.id.iv_back);
         iv_back.setOnClickListener(this);
@@ -75,6 +77,9 @@ public class CommunityDetailActivity extends BasePresenterActivity<CommunityDeta
         tv_type = findViewById(R.id.tv_type);
         tv_content = findViewById(R.id.tv_content);
         tv_assess_num = findViewById(R.id.tv_assess_num);
+        tv_assess_no = findViewById(R.id.tv_assess_no);
+        btn_assess_more = findViewById(R.id.btn_assess_more);
+        btn_assess_more.setOnClickListener(this);
         gv_photo = findViewById(R.id.gv_photo);
         lv_assess = findViewById(R.id.lv_assess);
         layout_send = findViewById(R.id.layout_send);
@@ -82,7 +87,7 @@ public class CommunityDetailActivity extends BasePresenterActivity<CommunityDeta
         Util.buttonBeyondKeyboardLayout(fl_send,layout_send);
         mPlayer = findViewById(R.id.mPlayer);
         onReplay(0);
-        if (IS_VEDIO == 0){
+        if (IS_VEDIO == 1){
             initPlayer();
             gv_photo.setVisibility(View.GONE);
             mPlayer.setVisibility(View.VISIBLE);
@@ -91,6 +96,19 @@ public class CommunityDetailActivity extends BasePresenterActivity<CommunityDeta
             mPlayer.setVisibility(View.GONE);
             setList();
         }
+        tv_name.setText(bean.getName());
+        tv_type.setText(bean.getType());
+        tv_content.setText(bean.getContent());
+        if(bean.getAssess_num() == 0){
+            lv_assess.setVisibility(View.GONE);
+            btn_assess_more.setVisibility(View.GONE);
+            tv_assess_no.setVisibility(View.VISIBLE);
+        }else{
+            lv_assess.setVisibility(View.VISIBLE);
+            btn_assess_more.setVisibility(View.VISIBLE);
+            tv_assess_no.setVisibility(View.GONE);
+        }
+
     }
 
     private void initPlayer() {
@@ -126,14 +144,16 @@ public class CommunityDetailActivity extends BasePresenterActivity<CommunityDeta
         mPlayer.setVisibility(View.VISIBLE);
         gv_photo.setVisibility(View.GONE);
 
-        list_photo = new ArrayList<>();
-        List<Integer> list_show = new ArrayList<>();
-        for (int i = 0;i<4;i++){
-            list_photo.add(R.mipmap.img_defult_mall);
-            if(i<3){
-                list_show.add(R.mipmap.img_defult_mall);
+        list_photo = bean.getImgs();
+        List<String> list_show = new ArrayList<>();
+        if(list_photo.size()>3){
+            for (int i = 0;i<3;i++){
+                list_show.add(list_photo.get(i));
             }
+        }else{
+            list_show = list_photo;
         }
+
         adapter_gv = new CommunityPhotoGridViewAdapter(this,list_photo.size());
         adapter_gv.setItems(list_show);
         gv_photo.setAdapter(adapter_gv);

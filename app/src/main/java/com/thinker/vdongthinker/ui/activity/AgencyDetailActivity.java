@@ -8,7 +8,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.thinker.vdongthinker.R;
+import com.thinker.vdongthinker.adapter.AgencyRecyclerAdapter;
 import com.thinker.vdongthinker.base.BasePresenterActivity;
+import com.thinker.vdongthinker.bean.AgencyMallRecyclerBean;
 import com.thinker.vdongthinker.presenter.AgencyDetailPresenter;
 import com.thinker.vdongthinker.ui.fragment.FragmentAgency;
 import com.thinker.vdongthinker.ui.fragment.FragmentAgencyCourse;
@@ -29,13 +31,18 @@ public class AgencyDetailActivity extends BasePresenterActivity<AgencyDetailPres
     private TextView tv_detail,tv_course;
     private ViewPager vp_content;
     private MyPageAdapter fragment_adapter;
+    public AgencyMallRecyclerBean bean;
 
     @Override
     public void initData() {
+        bean = (AgencyMallRecyclerBean) getIntent().getSerializableExtra("bean");
         iv_back = findViewById(R.id.iv_back);
+        iv_back.setOnClickListener(this);
         iv_funcation = findViewById(R.id.iv_function);
         tv_detail = findViewById(R.id.tv_detail);
         tv_course = findViewById(R.id.tv_course);
+        tv_course.setOnClickListener(this);
+        tv_detail.setOnClickListener(this);
         vp_content = findViewById(R.id.vp_content);
 
         vp_content = findViewById(R.id.vp_content);
@@ -99,6 +106,9 @@ public class AgencyDetailActivity extends BasePresenterActivity<AgencyDetailPres
                 tv_course.setTextColor(getResources().getColor(R.color.white));
                 vp_content.setCurrentItem(1);
 
+                break;
+            case R.id.iv_back:
+                finish();
                 break;
         }
     }

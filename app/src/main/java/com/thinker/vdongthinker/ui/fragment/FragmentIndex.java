@@ -10,15 +10,21 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.google.gson.reflect.TypeToken;
 import com.jaeger.library.StatusBarUtil;
 import com.thinker.vdongthinker.R;
 import com.thinker.vdongthinker.adapter.AgencyRecyclerAdapter;
 import com.thinker.vdongthinker.adapter.BaseAdapterRecycler;
+import com.thinker.vdongthinker.adapter.CourseRecyclerAdapter;
 import com.thinker.vdongthinker.adapter.IndexRecyclerAdapter;
 import com.thinker.vdongthinker.base.BasePresenterFragment;
 import com.thinker.vdongthinker.base.Constants;
+import com.thinker.vdongthinker.bean.AgencyJsonBean;
 import com.thinker.vdongthinker.bean.AgencyMallRecyclerBean;
+import com.thinker.vdongthinker.bean.CourseDetailBean;
+import com.thinker.vdongthinker.bean.CourseJsonBean;
 import com.thinker.vdongthinker.bean.IndexMallRecyclerBean;
+import com.thinker.vdongthinker.bean.ResponseEntity;
 import com.thinker.vdongthinker.customControl.AutoTextView;
 import com.thinker.vdongthinker.customControl.MyScrollView;
 import com.thinker.vdongthinker.customControl.ObservableScrollView;
@@ -29,6 +35,7 @@ import com.thinker.vdongthinker.ui.activity.AgencyDetailActivity;
 import com.thinker.vdongthinker.ui.activity.AgencyTypeActivity;
 import com.thinker.vdongthinker.ui.activity.CourseDetailActivity;
 import com.thinker.vdongthinker.ui.activity.CourseTypeActivity;
+import com.thinker.vdongthinker.ui.activity.LoginActivity;
 import com.thinker.vdongthinker.ui.activity.PersonalInfoActivity;
 import com.thinker.vdongthinker.ui.activity.SearchActivity;
 import com.thinker.vdongthinker.view.IndexView;
@@ -36,6 +43,7 @@ import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.listener.OnBannerListener;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,12 +57,14 @@ public class FragmentIndex extends BasePresenterFragment<IndexPresenter> impleme
     private LinearLayout layout_search,ll_content;
     private View view_background;
     private RecyclerView rv_course,rv_agency,rv_hot_mall;
-    private IndexRecyclerAdapter adapter_course,adapter_hot_mall;
+    private CourseRecyclerAdapter adapter_course;
+    private IndexRecyclerAdapter adapter_hot_mall;
     private AgencyRecyclerAdapter adapter_agency;
-    private List<IndexMallRecyclerBean> list_course,list_hot_mall;
-    private List<AgencyMallRecyclerBean> list_agency;
+    private List<CourseJsonBean> list_course;
+    private List<IndexMallRecyclerBean> list_hot_mall;
+    private List<AgencyJsonBean> list_agency;
     private Banner banner_index,banner_course,banner_agency,banner_hot_mall;
-    private List<String> imgs;
+    private List<Integer> imgs,imgs1,imgs2;
     private AutoTextView tv_news;
     private List<String> list_news;
     private TextView tv_course_more,tv_agency_more,tv_mall_more;
@@ -96,25 +106,36 @@ public class FragmentIndex extends BasePresenterFragment<IndexPresenter> impleme
     }
 
     private void setRecycler() {
-        list_course = new ArrayList<>();
-        list_course.add(new IndexMallRecyclerBean("商品标题","1000","1111"));
-        list_course.add(new IndexMallRecyclerBean("商品标题","1000","1111"));
-        list_course.add(new IndexMallRecyclerBean("商品标题","1000","1111"));
-        list_course.add(new IndexMallRecyclerBean("商品标题","1000","1111"));
-        list_agency = new ArrayList<>();
-        list_agency.add(new AgencyMallRecyclerBean("商品标题","管城区","1111"));
-        list_agency.add(new AgencyMallRecyclerBean("商品标题","管城区","1111"));
-        list_agency.add(new AgencyMallRecyclerBean("商品标题","管城区","1111"));
-        list_agency.add(new AgencyMallRecyclerBean("商品标题","管城区","1111"));
+        String json_course = Util.getJson("course.json",mPresenter.mContext);
+        Type type_course = new TypeToken<ResponseEntity<List<CourseJsonBean>>>() {
+        }.getType();
+        ResponseEntity<List<CourseJsonBean>> entity_course = gson.fromJson(json_course, type_course);
+        list_course = entity_course.getData();
+        //机构
+        String json = Util.getJson("organization.json",mPresenter.mContext);
+        Type type = new TypeToken<ResponseEntity<List<AgencyJsonBean>>>() {
+        }.getType();
+        ResponseEntity<List<AgencyJsonBean>> entity = gson.fromJson(json, type);
+        list_agency = entity.getData();
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),2);
         GridLayoutManager gridLayoutManager1 = new GridLayoutManager(getContext(),2);
         rv_course.setLayoutManager(gridLayoutManager);
         rv_agency.setLayoutManager(gridLayoutManager1);
-        adapter_course = new IndexRecyclerAdapter(getContext(),rv_course);
-        adapter_course.setItems(list_course);
+        rv_course.setNestedScrollingEnabled(false);
+        rv_agency.setNestedScrollingEnabled(false);
+        adapter_course = new CourseRecyclerAdapter(getContext(),rv_course);
+        if (list_course.get(0).getList().size()>7){
+            adapter_course.setItems(list_course.get(0).getList().subList(0,8));
+        }else{
+            adapter_course.setItems(list_course.get(0).getList());
+        }
         rv_course.setAdapter(adapter_course);
         adapter_agency = new AgencyRecyclerAdapter(getContext(),rv_agency);
-        adapter_agency.setItems(list_agency);
+        if (list_agency.get(0).getList().size()>7){
+            adapter_agency.setItems(list_agency.get(0).getList().subList(0,8));
+        }else{
+            adapter_agency.setItems(list_agency.get(0).getList());
+        }
         rv_agency.setAdapter(adapter_agency);
 //        list_hot_mall = new ArrayList<>();
 //        list_hot_mall.add(new IndexMallRecyclerBean("商品标题","1000","1111"));
@@ -130,18 +151,22 @@ public class FragmentIndex extends BasePresenterFragment<IndexPresenter> impleme
         adapter_course.setOnRecyclerViewItemClickListener(new BaseAdapterRecycler.OnRecyclerViewItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
+                CourseDetailBean bean = list_course.get(0).getList().get(position);
                 //跳转商品详情
                 Intent intent = new Intent(getActivity(),CourseDetailActivity.class);
-                intent.putExtra("","");
+                intent.putExtra("bean",bean);
+                intent.putExtra("type",list_course.get(0).getName());
                 startActivity(intent);
             }
         });
         adapter_agency.setOnRecyclerViewItemClickListener(new BaseAdapterRecycler.OnRecyclerViewItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
+                AgencyMallRecyclerBean bean = list_agency.get(0).getList().get(position);
 //跳转机构详情
                 Intent intent = new Intent(getActivity(),AgencyDetailActivity.class);
-                intent.putExtra("","");
+                intent.putExtra("bean",bean);
+                intent.putExtra("type",list_agency.get(0).getName());
                 startActivity(intent);
             }
         });
@@ -173,9 +198,13 @@ public class FragmentIndex extends BasePresenterFragment<IndexPresenter> impleme
     }
     private void setBannerDate(){
         imgs = new ArrayList<>();
-        imgs.add("");
-        imgs.add("");
-        imgs.add("");
+        imgs1 = new ArrayList<>();
+        imgs2 = new ArrayList<>();
+        imgs.add(R.drawable.img_index_b4);
+        imgs.add(R.drawable.img_index_b5);
+        imgs.add(R.drawable.img_index_b6);
+        imgs1.add(R.drawable.img_index_b2);
+        imgs2.add(R.drawable.img_index_b3);
         /*banner*/
         banner_index.setIndicatorGravity(BannerConfig.CENTER);
         banner_course.setIndicatorGravity(BannerConfig.CENTER);
@@ -186,8 +215,8 @@ public class FragmentIndex extends BasePresenterFragment<IndexPresenter> impleme
         banner_agency.setOnBannerListener(this);
 //        banner_hot_mall.setOnBannerListener(this);
         banner_index.setImages(imgs).setImageLoader(new GlideImageLoader(false)).start() ;
-        banner_course.setImages(imgs).setImageLoader(new GlideImageLoader(true)).start() ;
-        banner_agency.setImages(imgs).setImageLoader(new GlideImageLoader(true)).start() ;
+        banner_course.setImages(imgs1).setImageLoader(new GlideImageLoader(true)).start() ;
+        banner_agency.setImages(imgs2).setImageLoader(new GlideImageLoader(true)).start() ;
 //        banner_hot_mall.setImages(imgs).setImageLoader(new GlideImageLoader(true)).start() ;
     }
 
@@ -259,7 +288,8 @@ public class FragmentIndex extends BasePresenterFragment<IndexPresenter> impleme
                 startActivity(intent);
                 break;
             case R.id.iv_touxiang:
-                startActivity(new Intent(mPresenter.mActivity, PersonalInfoActivity.class));
+//                startActivity(new Intent(mPresenter.mActivity, PersonalInfoActivity.class));
+                startActivity(new Intent(mPresenter.mActivity, LoginActivity.class));
                 break;
         }
     }

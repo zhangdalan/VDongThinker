@@ -104,13 +104,18 @@
                             android:layout_height="wrap_content"
                             android:src="@mipmap/icon_news_more"/>
                     </LinearLayout>
-                    <android.support.v7.widget.RecyclerView
-                        android:id="@+id/rv_course"
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
-                        style="@style/defultPadding">
-                    </android.support.v7.widget.RecyclerView>
+                        android:layout_height="wrap_content">
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/rv_course"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            style="@style/defultPadding">
+                        </android.support.v7.widget.RecyclerView>
+                    </RelativeLayout>
+
                     <com.youth.banner.Banner
                         android:id="@+id/banner_course"
                         android:layout_width="match_parent"
@@ -163,6 +168,9 @@
                             android:layout_height="wrap_content"
                             android:src="@mipmap/icon_news_more"/>
                     </LinearLayout>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/rv_agency"
                         android:layout_width="match_parent"
@@ -170,6 +178,7 @@
                         android:layout_marginBottom="10dp"
                         style="@style/defultPadding">
                     </android.support.v7.widget.RecyclerView>
+                    </RelativeLayout>
                     <com.youth.banner.Banner
                         android:id="@+id/banner_agency"
                         android:layout_width="match_parent"
@@ -222,6 +231,9 @@
                             android:layout_height="wrap_content"
                             android:src="@mipmap/icon_news_more"/>
                     </LinearLayout>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/rv_hot_mall"
                         android:layout_width="match_parent"
@@ -229,6 +241,7 @@
                         android:layout_marginBottom="10dp"
                         style="@style/defultPadding">
                     </android.support.v7.widget.RecyclerView>
+                    </RelativeLayout>
                     <com.youth.banner.Banner
                         android:id="@+id/banner_hot_mall"
                         android:layout_width="match_parent"

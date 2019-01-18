@@ -39,7 +39,7 @@ public class GlideImageLoader extends ImageLoader {
             radius = 10;
         }
         RequestOptions options = new RequestOptions().centerCrop().placeholder(R.mipmap.img_defult_mall).priority(Priority.HIGH).transform(new GlideRoundTransform(radius, GlideRoundTransform.CornerType.ALL));
-            Glide.with(context).load("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1545198539&di=1467c52940267a6d1cfc5cfa318cb978&imgtype=jpg&er=1&src=http%3A%2F%2Fi2.hdslb.com%2Fbfs%2Farchive%2Fa73f4d508193aeac508f39dce297a9af4a69f65e.jpg").apply(options).into(imageView);
+            Glide.with(context).load(path).apply(options).into(imageView);
 
 //        Uri uri = Uri.parse(((BannerImage) path).getImgPath());
 //        imageView.setImageURI(uri);

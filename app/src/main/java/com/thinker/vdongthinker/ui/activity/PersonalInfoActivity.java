@@ -77,6 +77,9 @@ public class PersonalInfoActivity extends BasePresenterActivity<PersonalInfoPres
             case R.id.iv_function:
                 startActivity(new Intent(this,MessageActivity.class));
                 break;
+            case R.id.iv_back:
+                finish();
+                break;
         }
     }
 }

@@ -111,7 +111,8 @@
             <com.xiao.nicevideoplayer.NiceVideoPlayer
                 android:id="@+id/mPlayer"
                 android:layout_width="match_parent"
-                android:layout_height="180dp"></com.xiao.nicevideoplayer.NiceVideoPlayer>
+                android:layout_height="180dp"
+                android:visibility="gone"></com.xiao.nicevideoplayer.NiceVideoPlayer>
             <LinearLayout
                 style="@style/courseDetailBackground"
                 android:orientation="vertical"
@@ -132,13 +133,22 @@
                         android:textColor="@color/text_gray"
                         android:textSize="15sp" />
                 </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_assess_no"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp"
+                    android:text="暂无评论"
+                    android:gravity="center"/>
                 <com.thinker.vdongthinker.customControl.MeasureListView
                     android:id="@+id/lv_assess"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:overScrollMode="never"
                     android:scrollbars="none"
-                    android:dividerHeight="0.8dp">
+                    android:dividerHeight="0.8dp"
+                    >
                 </com.thinker.vdongthinker.customControl.MeasureListView>
                 <Button
                     android:id="@+id/btn_assess_more"

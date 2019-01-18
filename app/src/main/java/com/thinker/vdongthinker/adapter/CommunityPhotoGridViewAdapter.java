@@ -13,7 +13,7 @@ import com.thinker.vdongthinker.base.AdapterBase;
  * Created by zt on 2018/12/12.
  */
 
-public class CommunityPhotoGridViewAdapter extends AdapterBase<Integer> {
+public class CommunityPhotoGridViewAdapter extends AdapterBase<String> {
     private int img_num;
     public CommunityPhotoGridViewAdapter(Context context,int img_num) {
         super(context);
@@ -33,7 +33,7 @@ public class CommunityPhotoGridViewAdapter extends AdapterBase<Integer> {
             viewHolder = (CourseViewHolder) convertView.getTag();
         }
 //        CourseIconBean bean = (CourseIconBean) getItem(position);
-        int img = (int) getItem(position);
+        String img = (String) getItem(position);
 //        viewHolder.iv_photo.setImageResource(img);
         if (position == getCount()-1){
             viewHolder.tv_num.setVisibility(View.VISIBLE);

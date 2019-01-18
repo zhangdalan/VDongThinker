@@ -45,20 +45,26 @@ public class CommunityRecycleAdapter extends BaseAdapterRecycler<CommunityBean> 
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         CommunityViewHolder viewHolder = (CommunityViewHolder) holder;
         CommunityBean bean = (CommunityBean) getItem(position);
-        if(bean.getVideo() == 0){
+        viewHolder.tv_name.setText(bean.getName());
+        viewHolder.tv_type.setText(bean.getType());
+        viewHolder.tv_content.setText(bean.getContent());
+        viewHolder.tv_date.setText(bean.getDate());
+        viewHolder.tv_assess_num.setText(bean.getAssess_num()+"");
+        viewHolder.tv_zan_num.setText(bean.getLike()+"");
+        if(bean.getIsVideo() == 1){
             viewHolder.rv_video.setVisibility(View.VISIBLE);
             viewHolder.gv_photo.setVisibility(View.GONE);
         }else{
             viewHolder.rv_video.setVisibility(View.GONE);
             viewHolder.gv_photo.setVisibility(View.VISIBLE);
 
-            list_photo = (ArrayList<String>) bean.getList_img();
+            list_photo = (ArrayList<String>) bean.getImgs();
             adapter_gv = new CoursePhotoGridViewAdapter(mContext);
             adapter_gv.setItems(list_photo);
             viewHolder.gv_photo.setAdapter(adapter_gv);
             viewHolder.gv_photo.setOverScrollMode(View.OVER_SCROLL_NEVER);
         }
-        viewHolder.tv_zan_num.setText(bean.getIS_ZAN()+"");
+        viewHolder.tv_zan_num.setText(bean.getLike()+"");
         Glide.with(mContext).load(R.mipmap.icon_mall_on).apply(new RequestOptions().circleCrop()).into(viewHolder.iv_touxiang);
         viewHolder.rv_video.setOnClickListener(new View.OnClickListener() {
             @Override

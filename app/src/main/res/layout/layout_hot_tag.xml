@@ -13,5 +13,5 @@
         android:layout_height="wrap_content"
         android:text="#萨瓦迪卡#"
         android:textSize="14sp"
-        android:layout_marginLeft="2dp"/>
+        android:layout_marginLeft="2dp" />
 </LinearLayout>

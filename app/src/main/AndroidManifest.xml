@@ -57,6 +57,7 @@
         <activity android:name=".ui.activity.MessageZanActivity"/>
         <activity android:name=".ui.activity.MessageAssessActivity"/>
         <activity android:name=".ui.activity.MessageReplayActivity"/>
+        <activity android:name=".ui.activity.SetActivity"/>
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="${applicationId}.provider"

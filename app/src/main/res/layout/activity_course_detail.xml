@@ -53,8 +53,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="华菱总校承认钢管舞爵士专业舞蹈培训班一二三四五上山打老虎"
-            android:lines="1"
-            android:ellipsize="end"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="10dp"
             android:textColor="@color/text_black"
@@ -63,7 +61,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="15dp"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:visibility="gone">
             <TextView
                 android:id="@+id/tv_price"
                 android:layout_width="wrap_content"
@@ -407,10 +406,24 @@
                             android:textSize="13sp"
                             android:layout_marginTop="10dp"/>
                     </LinearLayout>
-                    <View
+                    <LinearLayout
+                        android:id="@+id/ll_map"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:background="@color/btn_gray"/>
+                        android:orientation="vertical"
+                        android:gravity="center">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/icon_address"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="到这去"
+                            android:textSize="11sp"
+                            android:textColor="@color/text_orange"
+                            android:layout_marginTop="2dp"/>
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
             <!--精彩瞬间-->
@@ -448,7 +461,8 @@
                     android:stretchMode="columnWidth"
                     android:verticalSpacing="10dp"
                     android:overScrollMode="never"
-                    android:horizontalSpacing="10dp">
+                    android:horizontalSpacing="10dp"
+                    android:layout_marginTop="10dp">
                 </com.thinker.vdongthinker.customControl.MeasureGridView>
             </LinearLayout>
             <!--学生评价-->
@@ -476,19 +490,27 @@
                         android:textColor="@color/text_gray"
                         android:textSize="15sp" />
                 </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp"
+                    android:text="暂无评价"
+                    android:gravity="center"/>
                 <com.thinker.vdongthinker.customControl.MeasureListView
                     android:id="@+id/lv_assess"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:overScrollMode="never"
-                    android:scrollbars="none">
+                    android:scrollbars="none"
+                    android:visibility="gone">
                 </com.thinker.vdongthinker.customControl.MeasureListView>
                 <Button
                     android:id="@+id/btn_assess_more"
                     android:text="@string/btn_more"
                     style="@style/btn_orange_stroke"
                     android:layout_gravity="center"
-                    android:layout_marginTop="10dp"/>
+                    android:layout_marginTop="10dp"
+                    android:visibility="gone"/>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
@@ -509,7 +531,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/background_orange"
-            android:text="@string/btn_buy_course"
+            android:text="联系机构"
             android:textSize="18sp"
             android:textColor="@color/white"/>
     </LinearLayout>

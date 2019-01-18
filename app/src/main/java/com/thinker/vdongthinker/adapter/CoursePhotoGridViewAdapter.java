@@ -36,7 +36,7 @@ public class CoursePhotoGridViewAdapter extends AdapterBase<String> {
         }
 //        CourseIconBean bean = (CourseIconBean) getItem(position);
         String img = (String) getItem(position);
-        Glide.with(mContext).load(img).into(viewHolder.iv_photo);
+        Glide.with(mContext).load("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1545734398143&di=c34340ac0ac072ae759730606b77a2bc&imgtype=0&src=http%3A%2F%2Fdiscovery.cctv.com%2F20070204%2Fimages%2F1170549068764_0013.jpg").into(viewHolder.iv_photo);
         return convertView;
     }
     class CourseViewHolder{

@@ -5,10 +5,12 @@ import com.thinker.vdongthinker.R;
 import java.util.List;
 
 /**
- * Created by zt on 2018/12/12.
+ * Created by zjw on 2018/12/12.
  */
 
 public class Constants {
+    public static final String HostURL = "" ;
+
     public static int[] course_icon = {R.mipmap.icon_gq,R.mipmap.icon_gz,R.mipmap.icon_hh,R.mipmap.icon_jt,R.mipmap.icon_jzg,R.mipmap.icon_sy,R.mipmap.icon_ws,R.mipmap.icon_wd,R.mipmap.icon_xtq,R.mipmap.icon_qb};
     public static String[] course_name = {"钢琴","古筝","绘画","吉他","架子鼓","声乐","武术","舞蹈","小提琴","全部"};
 

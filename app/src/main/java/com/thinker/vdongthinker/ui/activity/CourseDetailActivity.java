@@ -1,9 +1,11 @@
 package com.thinker.vdongthinker.ui.activity;
 
+import android.drm.DrmStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -12,10 +14,13 @@ import com.thinker.vdongthinker.adapter.CourseAssessListViewAdapter;
 import com.thinker.vdongthinker.adapter.CoursePhotoGridViewAdapter;
 import com.thinker.vdongthinker.base.BasePresenterActivity;
 import com.thinker.vdongthinker.bean.CourseAssessBean;
+import com.thinker.vdongthinker.bean.CourseDetailBean;
 import com.thinker.vdongthinker.bean.IndexMallRecyclerBean;
 import com.thinker.vdongthinker.customControl.MeasureGridView;
 import com.thinker.vdongthinker.customControl.MeasureListView;
 import com.thinker.vdongthinker.presenter.CourseDetailPresenter;
+import com.thinker.vdongthinker.tool.MapUtil;
+import com.thinker.vdongthinker.ui.dialog.ActionSheetDialog;
 import com.thinker.vdongthinker.view.CourseDetailView;
 
 import java.util.ArrayList;
@@ -40,8 +45,13 @@ public class CourseDetailActivity extends BasePresenterActivity<CourseDetailPres
     private List<String> list_photo;
     private CourseAssessListViewAdapter adapter_assess;
     private List<CourseAssessBean> list_assess;
+    private LinearLayout ll_map;
+    private CourseDetailBean bean;
+    private String type;
     @Override
     public void initData() {
+        bean = (CourseDetailBean) getIntent().getSerializableExtra("bean");
+        type =  getIntent().getStringExtra("type");
         tv_title = findViewById(R.id.tv_title);
         tv_title.setText("课程详情");
         iv_back = findViewById(R.id.iv_back);
@@ -73,8 +83,25 @@ public class CourseDetailActivity extends BasePresenterActivity<CourseDetailPres
         btn_buy.setOnClickListener(this);
         btn_assess_more = findViewById(R.id.btn_assess_more);
         btn_assess_more.setOnClickListener(this);
+        ll_map = findViewById(R.id.ll_map);
+        ll_map.setOnClickListener(this);
 
         setList();
+        setData();
+    }
+
+    private void setData() {
+        tv_course_type.setText("#"+type);
+        tv_course_name.setText(bean.getCourse_name());
+        tv_info.setText(bean.getSynopsis());
+        tv_age.setText(bean.getAge());
+        tv_date.setText(bean.getTime());
+        tv_hour.setText(bean.getCourse());
+        tv_time.setText(bean.getDate());
+        tv_remark.setText(bean.getRemark());
+        tv_address.setText(bean.getAddress());
+        tv_agency.setText(bean.getAgency_name());
+        tv_tel.setText(bean.getAgency_tel());
     }
 
     private void setList() {
@@ -95,6 +122,7 @@ public class CourseDetailActivity extends BasePresenterActivity<CourseDetailPres
         adapter_assess.setItems(list_assess);
         lv_assess.setAdapter(adapter_assess);
         lv_assess.setOverScrollMode(View.OVER_SCROLL_NEVER);
+
 
     }
 
@@ -134,6 +162,43 @@ public class CourseDetailActivity extends BasePresenterActivity<CourseDetailPres
             case R.id.btn_assess_more:
 
                 break;
+            case R.id.ll_map:
+                showWindows();
+                break;
         }
+    }
+    private void showWindows() {
+        ActionSheetDialog actionSheetDialog = new ActionSheetDialog(this);
+        actionSheetDialog .builder();
+        actionSheetDialog.setCancelable(false);
+        actionSheetDialog .setCanceledOnTouchOutside(false);
+        if(MapUtil.isGdMapInstalled()){
+            actionSheetDialog .addSheetItem("高德地图", ActionSheetDialog.SheetItemColor.Black,
+                    new ActionSheetDialog.OnSheetItemClickListener() {
+                        @Override
+                        public void onClick(int which) {
+//                            MapUtil.openGaoDeNavi(this, 0, 0, null, latx, laty, mAddress);
+                        }
+                    });
+        }
+        if (MapUtil.isBaiduMapInstalled()){
+            actionSheetDialog  .addSheetItem("百度地图", ActionSheetDialog.SheetItemColor.Black,
+                    new ActionSheetDialog.OnSheetItemClickListener() {
+                        @Override
+                        public void onClick(int which) {
+//                            MapUtil.openBaiDuNavi(this, 0, 0, null, latx, laty, mAddress);
+                        }
+                    });
+        }
+        if (MapUtil.isTencentMapInstalled()){
+            actionSheetDialog  .addSheetItem("腾讯地图", ActionSheetDialog.SheetItemColor.Black,
+                    new ActionSheetDialog.OnSheetItemClickListener() {
+                        @Override
+                        public void onClick(int which) {
+//                            MapUtil.openTencentMap(this, 0, 0, null, latx, laty, mAddress);
+                        }
+                    });
+        }
+        actionSheetDialog.show();
     }
 }

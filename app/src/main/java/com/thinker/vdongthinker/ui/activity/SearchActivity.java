@@ -9,19 +9,24 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.gson.reflect.TypeToken;
 import com.jaeger.library.StatusBarUtil;
 import com.thinker.vdongthinker.R;
 import com.thinker.vdongthinker.adapter.AgencyRecyclerAdapter;
 import com.thinker.vdongthinker.adapter.BaseAdapterRecycler;
 import com.thinker.vdongthinker.adapter.IndexRecyclerAdapter;
 import com.thinker.vdongthinker.base.BasePresenterActivity;
+import com.thinker.vdongthinker.bean.AgencyJsonBean;
 import com.thinker.vdongthinker.bean.AgencyMallRecyclerBean;
 import com.thinker.vdongthinker.bean.IndexMallRecyclerBean;
+import com.thinker.vdongthinker.bean.ResponseEntity;
 import com.thinker.vdongthinker.customControl.AutoTagView;
 import com.thinker.vdongthinker.customControl.HotTagView;
 import com.thinker.vdongthinker.presenter.SearchPresenter;
+import com.thinker.vdongthinker.tool.Util;
 import com.thinker.vdongthinker.view.SearchView;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,7 +42,7 @@ public class SearchActivity extends BasePresenterActivity<SearchPresenter> imple
     private View line1,line2;
     private RecyclerView rv_course,rv_agency;
     private List<IndexMallRecyclerBean> list_course;
-    private List<AgencyMallRecyclerBean> list_agency;
+    private List<AgencyJsonBean> list_agency;
     private IndexRecyclerAdapter adapter_course;
     private AgencyRecyclerAdapter adapter_agency;
 
@@ -172,7 +177,7 @@ public class SearchActivity extends BasePresenterActivity<SearchPresenter> imple
             tagView.setTagText(tags[i]);
             tagView.setTextColor(getResources().getColor(R.color.text_gray));
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            params.setMargins(15, 15, 15, 10);
+            params.setMargins(15, 15, 25, 10);
             tagView.setLayoutParams(params);
 //            tv.setBackgroundResource(R.drawable.text_background);
             atv_topic_hot.addView(tagView);
@@ -252,14 +257,15 @@ public class SearchActivity extends BasePresenterActivity<SearchPresenter> imple
      * 机构列表
      */
     private void setAgencyList(){
-        list_agency = new ArrayList<>();
-        for (int i = 0;i<12;i++){
-            list_agency.add(new AgencyMallRecyclerBean("商品标题","1000","1111"));
-        }
+        String json = Util.getJson("organization.json",mPresenter.mContext);
+        Type type = new TypeToken<ResponseEntity<List<AgencyJsonBean>>>() {
+        }.getType();
+        ResponseEntity<List<AgencyJsonBean>> entity = gson.fromJson(json, type);
+        list_agency = entity.getData();
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this,2);
         rv_agency.setLayoutManager(gridLayoutManager);
         adapter_agency = new AgencyRecyclerAdapter(this,rv_agency);
-        adapter_agency.setItems(list_agency);
+        adapter_agency.setItems(list_agency.get(0).getList());
         rv_agency.setAdapter(adapter_agency);
         adapter_agency.setOnRecyclerViewItemClickListener(new BaseAdapterRecycler.OnRecyclerViewItemClickListener() {
             @Override

@@ -24,7 +24,11 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.security.MessageDigest;
@@ -451,5 +455,23 @@ public final class Util {
                         }
                     }
                 });
+    }
+    /**
+     * 获取json文件中string
+     */
+    public static String getJson(String fileName, Context context){
+        StringBuilder stringBuilder = new StringBuilder();
+        try {
+            InputStream is = context.getAssets().open(fileName);
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(is));
+            String line;
+            while ((line=bufferedReader.readLine()) != null){
+                stringBuilder.append(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return stringBuilder.toString();
     }
 }

@@ -99,14 +99,14 @@ public class CommunityPhotoActivity extends BasePresenterActivity<CommunityPhoto
     private void setDate(){
 //        iv_touxiang.
         tv_name.setText(bean.getName());
-        if(bean.getIS_GUANZHU() == 0){
-            btn_add.setVisibility(View.VISIBLE);
-        }else{
-            btn_add.setVisibility(View.GONE);
-        }
-        if (bean.getIS_ZAN() == 1){
-            IS_ZAN = true;
-        }
+//        if(bean.getIS_GUANZHU() == 0){
+//            btn_add.setVisibility(View.VISIBLE);
+//        }else{
+//            btn_add.setVisibility(View.GONE);
+//        }
+//        if (bean.getIS_ZAN() == 1){
+//            IS_ZAN = true;
+//        }
         tv_type.setText("#"+bean.getType()+"#");
         tv_content.setText(bean.getContent());
         setZan();
@@ -114,7 +114,7 @@ public class CommunityPhotoActivity extends BasePresenterActivity<CommunityPhoto
     }
     private void setPhoto(){
         current = getIntent().getIntExtra("current",1);
-        imgs = bean.getList_img();
+        imgs = bean.getImgs();
         CommunityPhotoViewAdapter adapter = new CommunityPhotoViewAdapter(imgs,this);
         view_pager.setAdapter(adapter);
         view_pager.setCurrentItem(current);

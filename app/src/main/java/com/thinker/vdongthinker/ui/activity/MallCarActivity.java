@@ -15,7 +15,6 @@ import com.thinker.vdongthinker.R;
 import com.thinker.vdongthinker.adapter.AgencyRecyclerAdapter;
 import com.thinker.vdongthinker.adapter.MallCarAdapter;
 import com.thinker.vdongthinker.base.BasePresenterActivity;
-import com.thinker.vdongthinker.bean.AgencyMallRecyclerBean;
 import com.thinker.vdongthinker.presenter.MallCarPresenter;
 import com.thinker.vdongthinker.view.MallCarView;
 

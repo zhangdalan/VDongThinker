@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.gson.Gson;
+
 /**
  * Created by zt on 2018/3/20.
  */
@@ -14,6 +16,8 @@ public abstract class BasePresenterFragment<T extends BaseFragmentPresenter> ext
 
     public T mPresenter ;
     public abstract void initPresenter() ;
+
+    public Gson gson = new Gson();
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

@@ -18,7 +18,7 @@ import com.thinker.vdongthinker.bean.IndexMallRecyclerBean;
 import com.thinker.vdongthinker.tool.GlideRoundTransform;
 
 /**
- * Created by zt on 2018/12/10.
+ * Created by zjw on 2018/12/10.
  */
 
 public class AgencyRecyclerAdapter extends BaseAdapterRecycler<AgencyMallRecyclerBean> {
@@ -44,8 +44,8 @@ public class AgencyRecyclerAdapter extends BaseAdapterRecycler<AgencyMallRecycle
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         AgencyMallRecyclerBean bean = (AgencyMallRecyclerBean) getItem(position);
         final IndexViewHolder viewHolder = (IndexViewHolder) holder;
-        viewHolder.tv_mall_title.setText(bean.getTitle());
-        viewHolder.tv_price.setText("学员："+bean.getNum()+"人");
+        viewHolder.tv_mall_title.setText(bean.getName());
+        viewHolder.tv_price.setText("学员："+bean.getStudentNum()+"人");
         viewHolder.tv_num.setText(bean.getAddress());
         RequestOptions options = new RequestOptions().centerCrop().placeholder(R.mipmap.img_defult_mall).priority(Priority.HIGH).transform(new GlideRoundTransform(10, GlideRoundTransform.CornerType.TOP));
         Glide.with(mContext).load("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1545198539&di=1467c52940267a6d1cfc5cfa318cb978&imgtype=jpg&er=1&src=http%3A%2F%2Fi2.hdslb.com%2Fbfs%2Farchive%2Fa73f4d508193aeac508f39dce297a9af4a69f65e.jpg").apply(options).into(viewHolder.iv_mall);

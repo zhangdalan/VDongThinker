@@ -61,6 +61,7 @@
                     <View
                         style="@style/weight1"/>
                     <TextView
+                        android:id="@+id/tv_more1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="查看更多"
@@ -72,6 +73,9 @@
                         android:layout_height="wrap_content"
                         android:src="@mipmap/icon_news_more"/>
                 </LinearLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/rv_1"
                     android:layout_width="match_parent"
@@ -79,6 +83,7 @@
                     android:layout_marginBottom="10dp"
                     style="@style/defultPadding">
                 </android.support.v7.widget.RecyclerView>
+                </RelativeLayout>
                 <com.youth.banner.Banner
                     android:id="@+id/banner_show1"
                     android:layout_width="match_parent"
@@ -119,6 +124,7 @@
                     <View
                         style="@style/weight1"/>
                     <TextView
+                        android:id="@+id/tv_more2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="查看更多"
@@ -130,6 +136,9 @@
                         android:layout_height="wrap_content"
                         android:src="@mipmap/icon_news_more"/>
                 </LinearLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/rv_2"
                     android:layout_width="match_parent"
@@ -137,6 +146,7 @@
                     android:layout_marginBottom="10dp"
                     style="@style/defultPadding">
                 </android.support.v7.widget.RecyclerView>
+                </RelativeLayout>
                 <com.youth.banner.Banner
                     android:id="@+id/banner_show2"
                     android:layout_width="match_parent"
@@ -155,6 +165,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <LinearLayout
+                    android:id="@+id/tv_more3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -187,6 +198,9 @@
                         android:layout_height="wrap_content"
                         android:src="@mipmap/icon_news_more"/>
                 </LinearLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/rv_3"
                     android:layout_width="match_parent"
@@ -194,6 +208,7 @@
                     android:layout_marginBottom="10dp"
                     style="@style/defultPadding">
                 </android.support.v7.widget.RecyclerView>
+                </RelativeLayout>
                 <com.youth.banner.Banner
                     android:id="@+id/banner_show3"
                     android:layout_width="match_parent"

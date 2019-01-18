@@ -61,14 +61,14 @@ public class MyCommunityActivity extends BasePresenterActivity<MyCommunityPresen
         for (int i = 0; i < 10; i++) {
             list_assess.add(new CourseAssessBean("", "小仙女啊", "2019-01-01", "声明：本文内容由互联网用户自发贡献自行上传，本网站不拥有所有权，未作人工编辑处理，也不承担相关法律责任。"));
         }
-        for (int i = 0; i < 5; i++) {
-            if (i == 3 || i == 4) {
-                list_comm.add(new CommunityBean(0, "中思科技IT技术中心", "机器人", "", "机器人大赛长文本长文本长文本机器人大赛长文本长文本长文本机器人大赛长文本长文本长文本", list_img
-                        , list_assess, Constants.TEXT_VEDIO_URL, "", i, 0));
-            }
-            list_comm.add(new CommunityBean(1, "中思科技IT技术中心", "机器人", "", "机器人大赛长文本长文本长文本机器人大赛长文本长文本长文本机器人大赛长文本长文本长文本", list_img
-                    , list_assess, Constants.TEXT_VEDIO_URL, "", i, 0));
-        }
+//        for (int i = 0; i < 5; i++) {
+//            if (i == 3 || i == 4) {
+//                list_comm.add(new CommunityBean(0, "中思科技IT技术中心", "机器人", "", "机器人大赛长文本长文本长文本机器人大赛长文本长文本长文本机器人大赛长文本长文本长文本", list_img
+//                        , list_assess, Constants.TEXT_VEDIO_URL, "", i, 0));
+//            }
+//            list_comm.add(new CommunityBean(1, "中思科技IT技术中心", "机器人", "", "机器人大赛长文本长文本长文本机器人大赛长文本长文本长文本机器人大赛长文本长文本长文本", list_img
+//                    , list_assess, Constants.TEXT_VEDIO_URL, "", i, 0));
+//        }
         GridLayoutManager gridLayoutManager = new GridLayoutManager(mPresenter.mContext, 1);
         rv_community.setLayoutManager(gridLayoutManager);
         adapter_comm = new CommunityRecycleAdapter(mPresenter.mContext, rv_community);

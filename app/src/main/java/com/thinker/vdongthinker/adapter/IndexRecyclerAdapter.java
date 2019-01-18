@@ -22,7 +22,7 @@ import com.thinker.vdongthinker.tool.GlideRoundTransform;
 import java.util.List;
 
 /**
- * Created by zt on 2018/12/10.
+ * Created by zjw on 2018/12/10.
  */
 
 public class IndexRecyclerAdapter extends BaseAdapterRecycler<IndexMallRecyclerBean> {

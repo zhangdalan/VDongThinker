@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by zt on 2018/12/14.
+ * Created by zjw on 2018/12/14.
  */
 
 public class MallDetailActivity extends BasePresenterActivity<MallDetailPresenter> implements MallDetailView ,OnBannerListener,View.OnClickListener{

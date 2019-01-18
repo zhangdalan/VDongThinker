@@ -3,6 +3,7 @@ package com.thinker.vdongthinker.ui.fragment;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -11,10 +12,12 @@ import com.thinker.vdongthinker.adapter.CourseAssessListViewAdapter;
 import com.thinker.vdongthinker.adapter.CoursePhotoGridViewAdapter;
 import com.thinker.vdongthinker.base.BaseFragmentPresenter;
 import com.thinker.vdongthinker.base.BasePresenterFragment;
+import com.thinker.vdongthinker.bean.AgencyMallRecyclerBean;
 import com.thinker.vdongthinker.bean.CourseAssessBean;
 import com.thinker.vdongthinker.customControl.MeasureGridView;
 import com.thinker.vdongthinker.customControl.MeasureListView;
 import com.thinker.vdongthinker.presenter.AgencyDetailFragmentPresenter;
+import com.thinker.vdongthinker.ui.activity.AgencyDetailActivity;
 import com.thinker.vdongthinker.view.AgencyDetailFragmentView;
 
 import java.util.ArrayList;
@@ -36,7 +39,9 @@ public class FragmentAgencyDetail extends BasePresenterFragment<AgencyDetailFrag
     private CourseAssessListViewAdapter adapter_assess;
     private List<CourseAssessBean> list_assess;
     private boolean IS_MORE = false;
-
+    private LinearLayout ll_map;
+    private AgencyMallRecyclerBean bean;
+    private AgencyDetailActivity activity;
     @Override
     public void initData() {
         iv_bg = contentView.findViewById(R.id.iv_bg);
@@ -57,8 +62,21 @@ public class FragmentAgencyDetail extends BasePresenterFragment<AgencyDetailFrag
         btn_assess_more.setOnClickListener(this);
         gv_photo = contentView.findViewById(R.id.gv_photo);
         lv_assess = contentView.findViewById(R.id.lv_assess);
-
+        ll_map = contentView.findViewById(R.id.ll_map);
+        ll_map.setOnClickListener(this);
         setList();
+        setData();
+    }
+
+    private void setData() {
+        activity = (AgencyDetailActivity) mPresenter.mActivity;
+        bean = activity.bean;
+        tv_agency_name.setText(bean.getName());
+        tv_course_num.setText(bean.getCourseNum()+"");
+        tv_people_num.setText(bean.getStudentNum()+"");
+        tv_tel.setText(bean.getPhone());
+        tv_info.setText(bean.getIntroduction());
+        tv_agency.setText(bean.getDetailAddess());
     }
 
     private void setList() {
@@ -109,6 +127,9 @@ public class FragmentAgencyDetail extends BasePresenterFragment<AgencyDetailFrag
                 IS_MORE = !IS_MORE;
                 break;
             case R.id.btn_assess_more:
+
+                break;
+            case R.id.ll_map:
 
                 break;
         }

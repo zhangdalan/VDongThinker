@@ -7,6 +7,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.jaeger.library.StatusBarUtil;
 import com.thinker.vdongthinker.R;
 import com.thinker.vdongthinker.base.BasePresenterActivity;
 import com.thinker.vdongthinker.presenter.RegisterPresenter;
@@ -64,5 +65,13 @@ public class SetPasswordActivity extends BasePresenterActivity<SetPasswordPresen
 
                 break;
         }
+    }
+
+    @Override
+    public void setStatusBar() {
+        super.setStatusBar();
+        StatusBarUtil.setLightMode(this);
+        StatusBarUtil.setColor(this, getResources().getColor(R.color.white));
+        StatusBarUtil.setTranslucent(this, 0);
     }
 }

@@ -24,6 +24,9 @@
             android:orientation="vertical">
 
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv_course"
                 android:layout_width="match_parent"
@@ -32,6 +35,7 @@
                 android:layout_margin="15dp">
 
             </android.support.v7.widget.RecyclerView>
+            </RelativeLayout>
 
             <!--类型1-->
             <LinearLayout
@@ -73,6 +77,9 @@
                         android:layout_height="wrap_content"
                         android:src="@mipmap/icon_news_more"/>
                 </LinearLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/rv_1"
                     android:layout_width="match_parent"
@@ -80,6 +87,7 @@
                     android:layout_marginBottom="10dp"
                     style="@style/defultPadding">
                 </android.support.v7.widget.RecyclerView>
+                </RelativeLayout>
                 <com.youth.banner.Banner
                     android:id="@+id/banner_show1"
                     android:layout_width="match_parent"
@@ -132,6 +140,9 @@
                         android:layout_height="wrap_content"
                         android:src="@mipmap/icon_news_more"/>
                 </LinearLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/rv_2"
                     android:layout_width="match_parent"
@@ -139,6 +150,7 @@
                     android:layout_marginBottom="10dp"
                     style="@style/defultPadding">
                 </android.support.v7.widget.RecyclerView>
+                </RelativeLayout>
                 <com.youth.banner.Banner
                     android:id="@+id/banner_show2"
                     android:layout_width="match_parent"
